@@ -9,62 +9,49 @@ public class ParkingLot {
     private String myLocation;
     private int myCapacity;
     private int myNumberOfFloors;
-    private ArrayList<ParkingSpace> myParkingSpaces;
 
-    //have to be able to create new parking lots, when new parking lot created, automatically add some ParkingSpaces
-
-
-    public void ParkingLot(String theLotName, String theLocation, int theCapacity, int theNumberOfFloors)
-    {
-        myLotName = theLotName;
-        myLocation = theLocation;
-        myCapacity = theCapacity;
-        myNumberOfFloors = theNumberOfFloors;
-        myParkingSpaces = new ArrayList<ParkingSpace>();
+    public ParkingLot(String myLotName, String myLocation, int myCapacity, int myNumberOfFloors) {
+        this.myLotName = myLotName;
+        this.myLocation = myLocation;
+        this.myCapacity = myCapacity;
+        this.myNumberOfFloors = myNumberOfFloors;
     }
 
-    public String getLotName()
-    {
+    public String getMyLotName() {
         return myLotName;
     }
 
-    public  String getLocation()
-    {
+    public void setMyLotName(String myLotName) {
+        this.myLotName = myLotName;
+    }
+
+    public String getMyLocation() {
         return myLocation;
     }
 
-    public int getCapacity()
-    {
+    public void setMyLocation(String myLocation) {
+        this.myLocation = myLocation;
+    }
+
+    public int getMyCapacity() {
         return myCapacity;
     }
 
-    public int getNumberOfFloors()
-    {
-        return  myNumberOfFloors;
+    public void setMyCapacity(int myCapacity) {
+        this.myCapacity = myCapacity;
     }
 
-    public boolean addParkingSpace(ParkingSpace theParkingSpace)
-    {
-        boolean couldAddParkingSpace = false;
-
-
-        myParkingSpaces.add(theParkingSpace);
-        return couldAddParkingSpace;
+    public int getMyNumberOfFloors() {
+        return myNumberOfFloors;
     }
 
-    public ArrayList<ParkingSpace> getParkingSpaces()
-    {
-        return myParkingSpaces;
+    public void setMyNumberOfFloors(int myNumberOfFloors) {
+        this.myNumberOfFloors = myNumberOfFloors;
     }
 
-//    private int getNextParkingNumber()
-//    {
-//        boolean couldGetNextParkingNumber = false;
-//
-//        //get next number, check if less than capacity, if it is, return true
-//        return couldGetNextParkingNumber;
-//    }
-//
+    private ArrayList<ParkingSpace> myParkingSpaces;
+
+
 
 
 }
