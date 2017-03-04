@@ -66,7 +66,7 @@ public class ParkingAppDB {
         return staffList;
     }
 
-    public List<StaffMember> getParkingLots() throws SQLException {
+    public List<ParkingLot> getParkingLots() throws SQLException {
         if (conn == null) {
             createConnection();
         }
@@ -79,13 +79,13 @@ public class ParkingAppDB {
             stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                int staffNumber = rs.getInt("staffNumber");
-                String staffName = rs.getString("staffName");
-                String telephoneExt = rs.getString("telephoneExt");
-                String vehicleLicenseNumber = rs.getString("vehicleLicenseNumber");
-                StaffMember staffMember = new StaffMember(staffNumber, staffName,
-                        telephoneExt, vehicleLicenseNumber);
-                staffList.add(staffMember);
+                String lotName = rs.getString("lotName");
+                String location = rs.getString("location");
+                int capacity = rs.getInt("capacity");
+                int floors = rs.getInt("floors");
+                ParkingLot parkingLot = new ParkingLot(lotName, location,
+                        capacity, floors);
+                lotList.add(parkingLot);
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -94,7 +94,7 @@ public class ParkingAppDB {
                 stmt.close();
             }
         }
-        return staffList;
+        return lotList;
     }
 
     public StaffMember getStaff(int staffNumber) {

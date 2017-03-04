@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e5da0f89-f465-44b8-b3ce-be353990b448" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ParkingAppDB.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ParkingLot.java" afterPath="$PROJECT_DIR$/src/ParkingLot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SpaceBooking.java" afterPath="$PROJECT_DIR$/src/SpaceBooking.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/StaffMember.java" afterPath="$PROJECT_DIR$/src/StaffMember.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ParkingAppDB.java" afterPath="$PROJECT_DIR$/src/ParkingAppDB.java" />
     </list>
     <ignored path="ParkingApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,16 +30,16 @@
           <file leaf-file-name="ParkingAppDB.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/ParkingAppDB.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.504717">
-                  <caret line="122" column="60" selection-start-line="122" selection-start-column="60" selection-end-line="122" selection-end-column="60" />
+                <state vertical-scroll-proportion="0.7169811">
+                  <caret line="91" column="19" selection-start-line="91" selection-start-column="19" selection-end-line="91" selection-end-column="19" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <marker date="1488597792000" expanded="true" signature="1473:1576" placeholder="select staff... Staff" />
-                    <marker date="1488597792000" expanded="true" signature="2650:2725" placeholder="select staff... Staff" />
-                    <marker date="1488597792000" expanded="true" signature="2650:2735" placeholder="select lotNa... ParkingLot" />
-                    <marker date="1488597792000" expanded="true" signature="4132:4187" placeholder="insert into toork.Movies... " />
-                    <marker date="1488597792000" expanded="true" signature="5014:5067" placeholder="update toork... " />
-                    <marker date="1488597792000" expanded="true" signature="5014:5082" placeholder="update toork... " />
+                    <marker date="1488598298000" expanded="true" signature="1473:1576" placeholder="select staff... Staff" />
+                    <marker date="1488598298000" expanded="true" signature="2649:2724" placeholder="select staff... Staff" />
+                    <marker date="1488598298000" expanded="true" signature="2649:2734" placeholder="select lotNa... ParkingLot" />
+                    <marker date="1488598298000" expanded="true" signature="4048:4103" placeholder="insert into toork.Movies... " />
+                    <marker date="1488598298000" expanded="true" signature="4930:4983" placeholder="update toork... " />
+                    <marker date="1488598298000" expanded="true" signature="4930:4998" placeholder="update toork... " />
                   </folding>
                 </state>
               </provider>
@@ -213,8 +209,8 @@
         <option value="$PROJECT_DIR$/src/GUI.java" />
         <option value="$PROJECT_DIR$/src/SpaceBooking.java" />
         <option value="$PROJECT_DIR$/src/StaffMember.java" />
-        <option value="$PROJECT_DIR$/src/ParkingAppDB.java" />
         <option value="$PROJECT_DIR$/src/ParkingLot.java" />
+        <option value="$PROJECT_DIR$/src/ParkingAppDB.java" />
       </list>
     </option>
   </component>
@@ -757,12 +753,12 @@
       <option name="number" value="Default" />
       <updated>1488556912307</updated>
       <workItem from="1488556915189" duration="20130000" />
-      <workItem from="1488594030499" duration="3542000" />
+      <workItem from="1488594030499" duration="4013000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23672000" />
+    <option name="totallyTimeSpent" value="24143000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="696" y="-1178" width="1920" height="1178" extended-state="6" />
@@ -1029,16 +1025,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ParkingAppDB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.504717">
-          <caret line="122" column="60" selection-start-line="122" selection-start-column="60" selection-end-line="122" selection-end-column="60" />
+        <state vertical-scroll-proportion="0.7169811">
+          <caret line="91" column="19" selection-start-line="91" selection-start-column="19" selection-end-line="91" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1488597792000" expanded="true" signature="1473:1576" placeholder="select staff... Staff" />
-            <marker date="1488597792000" expanded="true" signature="2650:2725" placeholder="select staff... Staff" />
-            <marker date="1488597792000" expanded="true" signature="2650:2735" placeholder="select lotNa... ParkingLot" />
-            <marker date="1488597792000" expanded="true" signature="4132:4187" placeholder="insert into toork.Movies... " />
-            <marker date="1488597792000" expanded="true" signature="5014:5067" placeholder="update toork... " />
-            <marker date="1488597792000" expanded="true" signature="5014:5082" placeholder="update toork... " />
+            <marker date="1488598298000" expanded="true" signature="1473:1576" placeholder="select staff... Staff" />
+            <marker date="1488598298000" expanded="true" signature="2649:2724" placeholder="select staff... Staff" />
+            <marker date="1488598298000" expanded="true" signature="2649:2734" placeholder="select lotNa... ParkingLot" />
+            <marker date="1488598298000" expanded="true" signature="4048:4103" placeholder="insert into toork.Movies... " />
+            <marker date="1488598298000" expanded="true" signature="4930:4983" placeholder="update toork... " />
+            <marker date="1488598298000" expanded="true" signature="4930:4998" placeholder="update toork... " />
           </folding>
         </state>
       </provider>
