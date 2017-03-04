@@ -91,7 +91,6 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
     public GUI() {
         super("Parking Application");
 
-        //TODO replace with other parking db
         myParkingAppDB = new ParkingAppDB();
         try
         {
@@ -213,7 +212,6 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
 
         panel = new JPanel();
         //show parking lots scroll pane
-        //TODO remove and add real data
         try {
             myListOfParkingLots = myParkingAppDB.getParkingLots();
         } catch (SQLException e1) {
@@ -227,7 +225,7 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
             data[i][2] = myListOfParkingLots.get(i).getMyCapacity();
             data[i][3] = myListOfParkingLots.get(i).getMyNumberOfFloors();
         }
-        myParkingLotsTable = new JTable(data, columnNames); //modify by adding data and columnNames
+        myParkingLotsTable = new JTable(data, myParkingLotColumnNames); //modify by adding data and columnNames
         myParkingLotsScrollPane = new JScrollPane(myParkingLotsTable);
         panel.add(myParkingLotsScrollPane);
         myParkingLotsTable.getModel().addTableModelListener(this);
@@ -294,7 +292,7 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
             data[i][2] = myListOfParkingLots.get(i).getMyCapacity();
             data[i][3] = myListOfParkingLots.get(i).getMyNumberOfFloors();
         }
-        myStaffTable = new JTable(data, columnNames); //modify by adding data and columnNames
+        myStaffTable = new JTable(data, myParkingLotColumnNames); //modify by adding data and columnNames
         myStaffScrollPane = new JScrollPane(myStaffTable);
         panel.add(myStaffScrollPane);
         myStaffTable.getModel().addTableModelListener(this);
@@ -337,7 +335,7 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
             data[i][2] = myListOfParkingLots.get(i).getMyCapacity();
             data[i][3] = myListOfParkingLots.get(i).getMyNumberOfFloors();
         }
-        myStaffTable = new JTable(data, columnNames);
+        myStaffTable = new JTable(data, myParkingLotColumnNames);
         myStaffScrollPane = new JScrollPane(myStaffTable);
         panel.add(myStaffScrollPane);
         myStaffTable.getModel().addTableModelListener(this);
@@ -360,7 +358,7 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
             data[i][2] = myListOfParkingLots.get(i).getMyCapacity();
             data[i][3] = myListOfParkingLots.get(i).getMyNumberOfFloors();
         }
-        myParkingSpacesTable = new JTable(data, columnNames); //modify by adding data and columnNames
+        myParkingSpacesTable = new JTable(data, myParkingLotColumnNames); //modify by adding data and columnNames
         myParkingSpacesScrollPane = new JScrollPane(myParkingSpacesTable);
         panel.add(myParkingSpacesScrollPane);
         myParkingSpacesTable.getModel().addTableModelListener(this);
@@ -404,7 +402,7 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
             data[i][2] = myListOfParkingLots.get(i).getMyCapacity();
             data[i][3] = myListOfParkingLots.get(i).getMyNumberOfFloors();
         }
-        myParkingSpacesTable = new JTable(data, columnNames);
+        myParkingSpacesTable = new JTable(data, myParkingLotColumnNames);
         myParkingSpacesScrollPane = new JScrollPane(myParkingSpacesTable);
         panel.add(myParkingSpacesScrollPane);
         myParkingSpacesTable.getModel().addTableModelListener(this);
@@ -504,8 +502,7 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
                 }
 
 
-                //TODO send to db
-
+                //send to db
                 if(canAddParkingLot)
                 {
                     myParkingAppDB.addParkingLot(parkingLot);
