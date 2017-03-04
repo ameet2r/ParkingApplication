@@ -276,6 +276,17 @@ public class ParkingAppDB {
     }
 
     public void addBooking(SpaceBooking theSpaceBooking) {
+        String sql = "insert into toork.SpaceBooking values " + "(?, ?); ";
 
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1, theSpaceBooking.getMyBookingId());
+//            preparedStatement.setInt(2, theSpaceNumber);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+            e.printStackTrace();
+        }
     }
 }

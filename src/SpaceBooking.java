@@ -2,11 +2,11 @@
  * Created by Ameet2r on 3/3/17.
  */
 public class SpaceBooking {
+    private int myBookingId;
     private int myParkingSpaceNumber;
     private int myStaffNumber;
     private String myLicenseNumber;
     private String myDateOfVisit;
-    private String myBookingId;
 
     public int getMyParkingSpaceNumber() {
         return myParkingSpaceNumber;
@@ -40,11 +40,11 @@ public class SpaceBooking {
         this.myDateOfVisit = myDateOfVisit;
     }
 
-    public String getMyBookingId() {
+    public int getMyBookingId() {
         return myBookingId;
     }
 
-    public void setMyBookingId(String myBookingId) {
+    public void setMyBookingId(int myBookingId) {
         this.myBookingId = myBookingId;
     }
 }

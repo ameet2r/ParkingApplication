@@ -19,7 +19,7 @@ public class TestSQL {
             e.printStackTrace();
         }
 //        parkingAppDB.updateStaff(0, "vehicleLicenseNumber", "12311111111");
-        parkingAppDB.addStaffSpace(123, 4);
-        parkingAppDB.updateParkingSpace(4, "monthlyRate", BigDecimal.valueOf(22.30));
+//        parkingAppDB.addStaffSpace(123, 4);
+        parkingAppDB.updateParkingSpace(4, "taken", true);
     }
 }
