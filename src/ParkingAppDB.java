@@ -239,6 +239,43 @@ public class ParkingAppDB {
             System.out.println(e);
             e.printStackTrace();
         }
+    }
+
+    public void updateParkingSpace(int theSpaceNumber, String columnName, Object data) {
+
+        String sql = "update toork.ParkingSpace set " + columnName + " = ?  where spaceNumber = ? ";
+        System.out.println(sql);
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = conn.prepareStatement(sql);
+            if (data instanceof BigDecimal)
+                preparedStatement.setBigDecimal(1, (BigDecimal) data);
+            else
+                preparedStatement.setBoolean(1, (boolean) data);
+            preparedStatement.setInt(2, theSpaceNumber);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+            e.printStackTrace();
+        }
+    }
+
+    public void addStaffSpace(int theStaffNumber, int theSpaceNumber) {
+        String sql = "insert into toork.StaffSpace values " + "(?, ?); ";
+
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1, theStaffNumber);
+            preparedStatement.setInt(2, theSpaceNumber);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+            e.printStackTrace();
+        }
+    }
+
+    public void addBooking(SpaceBooking theSpaceBooking) {
 
     }
 }

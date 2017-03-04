@@ -1,3 +1,4 @@
+import java.math.BigDecimal;
 import java.sql.SQLException;
 
 /**
@@ -12,6 +13,13 @@ public class TestSQL {
             e.printStackTrace();
         }
 //        parkingAppDB.addStaffMember(new StaffMember(1234, "tester", "123122312", "asdfasdf"));
-//        parkingAppDB.updateStaff();
+        try {
+            parkingAppDB.getStaffMembers();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+//        parkingAppDB.updateStaff(0, "vehicleLicenseNumber", "12311111111");
+        parkingAppDB.addStaffSpace(123, 4);
+        parkingAppDB.updateParkingSpace(4, "monthlyRate", BigDecimal.valueOf(22.30));
     }
 }
