@@ -41,6 +41,12 @@ public class ParkingAppDB {
         System.out.println("Connected to database");
     }
 
+    /**
+     * Returns a list of all the staff members in the Staff table.
+     *
+     * @return a list of staff members.
+     * @throws SQLException if the query is unsuccessful.
+     */
     public List<StaffMember> getStaffMembers() throws SQLException {
         if (myConn == null) {
             createConnection();
@@ -72,6 +78,12 @@ public class ParkingAppDB {
         return myStaffList;
     }
 
+    /**
+     * Gets a list of parking lots in the ParkingLot table.
+     *
+     * @return a list of parking lots.
+     * @throws SQLException if the query is unsuccessful.
+     */
     public List<ParkingLot> getParkingLots() throws SQLException {
         if (myConn == null) {
             createConnection();
@@ -103,6 +115,12 @@ public class ParkingAppDB {
         return myLotList;
     }
 
+    /**
+     * Gets a list of parking spaces in the ParkingSpaces table.
+     *
+     * @return a list of parking spaces.
+     * @throws SQLException if the query is unsuccessful.
+     */
     public List<ParkingSpace> getParkingSpaces() throws SQLException {
         if (myConn == null) {
             createConnection();
@@ -134,6 +152,12 @@ public class ParkingAppDB {
         return mySpaceList;
     }
 
+    /**
+     * Gets the largest parking space id.
+     *
+     * @return the largest parking space id.
+     * @throws SQLException if the query is unsuccessful.
+     */
     public int getMaxParkingSpaceNumber() throws SQLException {
         int num = -1;
         if (myConn == null) {
@@ -159,6 +183,12 @@ public class ParkingAppDB {
         return num;
     }
 
+    /**
+     * Gets the largest booking number id.
+     *
+     * @return the largets booking number id.
+     * @throws SQLException if the query is unsuccessful.
+     */
     public int getMaxBookingNumber() throws SQLException {
         int num = -1;
         if (myConn == null) {
@@ -184,6 +214,13 @@ public class ParkingAppDB {
         return num;
     }
 
+    /**
+     * Adds a parking space to the ParkingSpace table.
+     *
+     * @param theSpaces   the number of spaces to add.
+     * @param theLotName  the lot to add to.
+     * @param theMaxSpace the current largest id of parking spaces.
+     */
     public void addParkingSpace(int theSpaces, String theLotName, int theMaxSpace) {
         String sql = "insert into toork.ParkingSpace values " + "(?, ?, ?, ?); ";
 
@@ -203,6 +240,11 @@ public class ParkingAppDB {
         }
     }
 
+    /**
+     * Adds a new parking lot to the ParkingLot table.
+     *
+     * @param theParkingLot the unique name of the parking lot to add.
+     */
     public void addParkingLot(ParkingLot theParkingLot) {
         String sql = "insert into toork.ParkingLot values " + "(?, ?, ?, ?); ";
 
@@ -220,6 +262,12 @@ public class ParkingAppDB {
         }
     }
 
+    /**
+     * Gets the staff member given the staff member's id.
+     *
+     * @param theStaffNumber staff member id.
+     * @return the staff member.
+     */
     public StaffMember getStaff(int theStaffNumber) {
         StaffMember toReturn = null;
         try {
@@ -235,6 +283,11 @@ public class ParkingAppDB {
         return toReturn;
     }
 
+    /**
+     * Adds a staff member to the Staff table.
+     *
+     * @param theStaffMember the staff member to add.
+     */
     public void addStaffMember(StaffMember theStaffMember) {
         String sql = "insert into toork.Staff values " + "(?, ?, ?, ?); ";
 
@@ -252,6 +305,13 @@ public class ParkingAppDB {
         }
     }
 
+    /**
+     * Updates the Staff table with a given staff member's row and the column to modify.
+     *
+     * @param theRow        the row in the Staff database to modify.
+     * @param theColumnName the attribute name.
+     * @param theData       the new data.
+     */
     public void updateStaff(int theRow, String theColumnName, Object theData) {
 
         StaffMember staffMember = myStaffList.get(theRow);
@@ -271,6 +331,13 @@ public class ParkingAppDB {
         }
     }
 
+    /**
+     * Updates the ParkingSpace table with a given parking space id and the column to modify.
+     *
+     * @param theSpaceNumber the id of the parking space.
+     * @param theColumnName  the attribute name.
+     * @param theData        the new data.
+     */
     public void updateParkingSpace(int theSpaceNumber, String theColumnName, Object theData) {
 
         String sql = "update toork.ParkingSpace set " + theColumnName + " = ?  where spaceNumber = ? ";
@@ -290,6 +357,13 @@ public class ParkingAppDB {
         }
     }
 
+    /**
+     * Updates the ParkingLot table with the given lot name and the column to modify.
+     *
+     * @param theLotName    the unique name of the parking lot.
+     * @param theColumnName the attribute name.
+     * @param theData       the new data.
+     */
     public void updateParkingLot(String theLotName, String theColumnName, int theData) {
 
         String sql = "update toork.ParkingLot set " + theColumnName + " = ?  where lotName = ? ";
@@ -306,6 +380,12 @@ public class ParkingAppDB {
         }
     }
 
+    /**
+     * Add's an entry to the StaffSpace table.
+     *
+     * @param theStaffNumber The unique staff number.
+     * @param theSpaceNumber The unique space number.
+     */
     public void addStaffSpace(int theStaffNumber, int theSpaceNumber) {
         String sql = "insert into toork.StaffSpace values " + "(?, ?); ";
 
@@ -321,6 +401,11 @@ public class ParkingAppDB {
         }
     }
 
+    /**
+     * Add's a visitor booking to the SpaceBooking table.
+     *
+     * @param theSpaceBooking The booking to add.
+     */
     public void addBooking(SpaceBooking theSpaceBooking) {
         String sql = "insert into toork.SpaceBooking values " + "(?, ?, ?, ?, ?); ";
 
