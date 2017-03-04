@@ -1,3 +1,5 @@
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,6 +8,7 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 import java.math.BigDecimal;
+import java.sql.JDBCType;
 import java.util.List;
 import java.sql.SQLException;
 
@@ -620,8 +623,24 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
                 parkingLotName = myTxfField[0].getText();
                 numberOfParkingSpaces = Integer.parseInt(myTxfField[1].getText());
 
-                //grab current capacity
+                //check if lot in list
+                boolean isParkingLotInList =false;
                 myListOfParkingLots = myParkingAppDB.getParkingLots();
+                for(ParkingLot parkingLot : myListOfParkingLots)
+                {
+                    if(parkingLot.getMyLotName().equals(parkingLotName))
+                    {
+                        isParkingLotInList = true;
+                    }
+                }
+
+                if(!isParkingLotInList)
+                {
+                    ParkingLot parkingLot = new ParkingLot(parkingLotName, "", numberOfParkingSpaces, 1);
+                    myParkingAppDB.addParkingLot(parkingLot);
+                }
+
+                //grab current capacity
                 int currentCapacity = 0;
                 for(ParkingLot parkingLot : myListOfParkingLots)
                 {
@@ -671,7 +690,7 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
                 myParkingAppDB.addStaffMember(staffMember);
 
                 JOptionPane.showMessageDialog(null, "Success");
-            }catch (Throwable t) {
+            }catch (Throwable theT) {
                 JOptionPane.showMessageDialog(null, "There was a problem");
             }
         }
