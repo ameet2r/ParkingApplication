@@ -10,11 +10,11 @@ public class ParkingLot {
     private int myCapacity;
     private int myNumberOfFloors;
 
-    public ParkingLot(String myLotName, String myLocation, int myCapacity, int myNumberOfFloors) {
-        this.myLotName = myLotName;
-        this.myLocation = myLocation;
-        this.myCapacity = myCapacity;
-        this.myNumberOfFloors = myNumberOfFloors;
+    public ParkingLot(String theLotName, String theLocation, int theCapacity, int theNumberOfFloors) {
+        this.myLotName = theLotName;
+        this.myLocation = theLocation;
+        this.myCapacity = theCapacity;
+        this.myNumberOfFloors = theNumberOfFloors;
     }
 
     public String getMyLotName() {
