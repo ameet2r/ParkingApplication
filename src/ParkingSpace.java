@@ -24,6 +24,7 @@ public class ParkingSpace {
         this.myParkingSpaceNumber = myParkingSpaceNumber;
         this.myMonthlyRate = myMonthlyRate;
         this.myLotName = myLotName;
+        this.myTaken = myTaken;
     }
 
     public int getMyParkingSpaceNumber() {
