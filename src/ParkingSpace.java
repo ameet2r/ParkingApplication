@@ -32,7 +32,7 @@ public class ParkingSpace {
      *
      * @return boolean representing if the space is taken.
      */
-    public boolean isMyTaken() {
+    public boolean getMyTaken() {
         return myTaken;
     }
 
