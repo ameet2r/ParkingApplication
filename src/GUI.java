@@ -46,7 +46,7 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
             "StudioName"};
 
     private String[] myParkingLotColumnNames = {"lotName", "location", "capacity", "floors"};
-    private String[] myParkingSpaceColumnNames = {"spaceNumber", "monthlyRate", "lotName"};
+    private String[] myParkingSpaceColumnNames = {"spaceNumber", "monthlyRate", "lotName", "isTaken"};
     private String[] myStaffColumnNames = {"staffNumber", "staffName", "telephoneExt", "vehicleLicenseNumber"};
 
     private Object[][] data;
@@ -356,11 +356,10 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
         }
         data = new Object[myListOfParkingSpaces.size()][myParkingSpaceColumnNames.length];
         for (int i=0; i<myListOfParkingSpaces.size(); i++) {
-            if(!myListOfParkingSpaces.get(i).isMyTaken()) {
                 data[i][0] = myListOfParkingSpaces.get(i).getMyParkingSpaceNumber();
                 data[i][1] = myListOfParkingSpaces.get(i).getMyMonthlyRate();
                 data[i][2] = myListOfParkingSpaces.get(i).getMyLotName();
-            }
+                data[i][3] = myListOfParkingSpaces.get(i).isMyTaken();
         }
         myParkingSpacesTable = new JTable(data, myParkingSpaceColumnNames);
         myParkingSpacesScrollPane = new JScrollPane(myParkingSpacesTable);
@@ -372,8 +371,9 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
     private void assignParkingSpaceToVisitorPanel()
     {
         pnlAssignParkingSpaceToVisitor = new JPanel();
-        pnlAssignParkingSpaceToVisitor.setLayout(new FlowLayout());
-        String labelNames[] = {"Enter parking space number: ", "Enter visitor license number: "};
+        pnlAssignParkingSpaceToVisitor.setLayout(new GridLayout(2,3));
+        String labelNames[] = {"Enter parking space number: ", "Enter visitor license number: ",
+                "Enter date (DD-MM-YY): ", "Enter staff number: "};
         for(int i = 0; i < labelNames.length; i++)
         {
             JPanel panel = new JPanel();
@@ -392,21 +392,21 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
 
         //add list of parking spaces
         panel = new JPanel();
-        //TODO remove and add real data
         try {
-            myListOfParkingLots = myParkingAppDB.getParkingLots();
+            myListOfParkingSpaces = myParkingAppDB.getParkingSpaces();
         } catch (SQLException e1) {
-            // TODO Auto-generated catch block
             e1.printStackTrace();
         }
-        data = new Object[myListOfParkingLots.size()][myParkingLotColumnNames.length];
-        for (int i=0; i<myListOfParkingLots.size(); i++) {
-            data[i][0] = myListOfParkingLots.get(i).getMyLotName();
-            data[i][1] = myListOfParkingLots.get(i).getMyLocation();
-            data[i][2] = myListOfParkingLots.get(i).getMyCapacity();
-            data[i][3] = myListOfParkingLots.get(i).getMyNumberOfFloors();
+        data = new Object[myListOfParkingSpaces.size()][myParkingSpaceColumnNames.length];
+        for (int i=0; i<myListOfParkingSpaces.size(); i++) {
+            if(!myListOfParkingSpaces.get(i).isMyTaken()) {
+                data[i][0] = myListOfParkingSpaces.get(i).getMyParkingSpaceNumber();
+                data[i][1] = myListOfParkingSpaces.get(i).getMyMonthlyRate();
+                data[i][2] = myListOfParkingSpaces.get(i).getMyLotName();
+                data[i][3] = myListOfParkingSpaces.get(i).isMyTaken();
+            }
         }
-        myParkingSpacesTable = new JTable(data, myParkingLotColumnNames);
+        myParkingSpacesTable = new JTable(data, myParkingSpaceColumnNames);
         myParkingSpacesScrollPane = new JScrollPane(myParkingSpacesTable);
         panel.add(myParkingSpacesScrollPane);
         myParkingSpacesTable.getModel().addTableModelListener(this);
@@ -666,19 +666,32 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
         {
             int parkingSpaceNumber = 0;
             String visitorLicenseNum = "";
+            String date = "";
+            int staffNum = 0;
+            int bookingId = 0;
             try{
                 parkingSpaceNumber = Integer.parseInt(myTxfField[0].getText());
                 visitorLicenseNum = myTxfField[1].getText();
+                date = myTxfField[2].getText();
+                staffNum = Integer.parseInt(myTxfField[3].getText());
 
 
 
                 //TODO send to db
+//                SpaceBooking spaceBooking = new SpaceBooking()
+
 
 
                 JOptionPane.showMessageDialog(null, "Success");
             }catch (Throwable t) {
                 JOptionPane.showMessageDialog(null, "There was a problem");
             }
+
+            pnlContent.removeAll();
+            assignParkingSpaceToVisitorPanel();
+            pnlContent.add(pnlAssignParkingSpaceToVisitor);
+            pnlContent.revalidate();
+            this.repaint();
         }
 
     }
