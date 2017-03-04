@@ -1,12 +1,15 @@
 /**
  * Author: mmuppa, modified by Ameet2r
  */
+import org.omg.CORBA.INTERNAL;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
+import javax.swing.table.TableModel;
 import java.util.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,9 +21,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-//TODO finish layouts
-//TODO grab data from textboxes when user presses add
+//TODO finish layouts                                                       DONE
+//TODO grab data from textboxes when user presses add                       DONE
 //TODO modify input to tell user what to input                              DONE
+//TODO add specific column names for each table.
+//TODO change fields to start with my
 
 
 
@@ -38,6 +43,10 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
             "Length",
             "Genre",
             "StudioName"};
+
+    private String[] myParkingLotColumnNames = {};
+    private String[] myParkingSpaceColumnNames = {};
+    private String[] myStaffColumnNames = {};
 
     private Object[][] data;
     private JTable table;
@@ -97,9 +106,9 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
             e.printStackTrace();
         }
         createComponents();
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+//        setUndecorated(true);
         setVisible(true);
-        setSize(1300, 1200);
-        setMinimumSize(new Dimension(1300, 1200));
     }
 
     /**
@@ -162,7 +171,7 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
     {
         pnlAddParkingLot = new JPanel();
         pnlAddParkingLot.setLayout(new GridLayout(4,0));
-        String labelNames[] = {"Enter Lot Name: ", "Enter Lot Capacity", "Enter Number of floors: "};
+        String labelNames[] = {"Enter Lot Name: ", "Enter Lot Capacity", "Enter Number of floors: ", "Enter location: "};
         for(int i = 0; i < labelNames.length; i++)
         {
             JPanel panel = new JPanel();
@@ -177,14 +186,13 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
         btnAddParkingLot.addActionListener(this);
         panel.add(btnAddParkingLot);
         pnlAddParkingLot.add(panel);
-        add(pnlContent, BorderLayout.CENTER);
     }
 
     private void addParkingSpacePanel()
     {
         pnlAddParkingSpace = new JPanel();
         pnlAddParkingSpace.setLayout(new GridLayout(3,0));
-        String labelNames[] = {"Enter Lot name: ", "Enter monthly rate: "};
+        String labelNames[] = {"Enter Lot name: ", "Enter how many spaces to add: "};
         for(int i = 0; i < labelNames.length; i++)
         {
             JPanel panel = new JPanel();
@@ -329,7 +337,7 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
             data[i][3] = list.get(i).getGenre();
             data[i][4] = list.get(i).getStudioName();
         }
-        myStaffTable = new JTable(data, columnNames); //modify by adding data and columnNames
+        myStaffTable = new JTable(data, columnNames);
         myStaffScrollPane = new JScrollPane(myStaffTable);
         panel.add(myStaffScrollPane);
         myStaffTable.getModel().addTableModelListener(this);
@@ -398,7 +406,7 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
             data[i][3] = list.get(i).getGenre();
             data[i][4] = list.get(i).getStudioName();
         }
-        myParkingSpacesTable = new JTable(data, columnNames); //modify by adding data and columnNames
+        myParkingSpacesTable = new JTable(data, columnNames);
         myParkingSpacesScrollPane = new JScrollPane(myParkingSpacesTable);
         panel.add(myParkingSpacesScrollPane);
         myParkingSpacesTable.getModel().addTableModelListener(this);
@@ -413,21 +421,6 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
     {
         GUI gui = new GUI();
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-    }
-
-    private void updateStaffList()
-    {
-
-    }
-
-    private void updateParkingLotList()
-    {
-
-    }
-
-    private void updateParkingSpacesList()
-    {
 
     }
 
@@ -446,9 +439,6 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
             this.repaint();
 
         } else if (e.getSource() == btnAddParkingSpaceView) {
-
-            //grab all parking lots and load into a list to add to choose parking lot thing
-
             pnlContent.removeAll();
             addParkingSpacePanel();
             pnlContent.add(pnlAddParkingSpace);
@@ -463,19 +453,12 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
             this.repaint();
 
         } else if (e.getSource() == btnEditStaffMemberView) {
-
-            //grab all staff members
-
-
             pnlContent.removeAll();
             editStaffMemberPanel();
             pnlContent.add(pnlEditStaffMember);
             pnlContent.revalidate();
             this.repaint();
         } else if (e.getSource() == btnAssignParkingSpaceView) {
-
-            //grab all staff members, parking lots, and parking spaces
-
             pnlContent.removeAll();
             assignParkingSpacePanel();
             pnlContent.add(pnlAssignParkingSpace);
@@ -484,7 +467,6 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
         }
         else if (e.getSource() == btnAssignParkingSpaceToVisitorView)
         {
-            //grab all parking lots and parking spaces
             pnlContent.removeAll();
             assignParkingSpaceToVisitorPanel();
             pnlContent.add(pnlAssignParkingSpaceToVisitor);
@@ -493,71 +475,149 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
         }
         else if(e.getSource() == btnAddParkingLot)
         {
-            //get name
+            String parkingLotName = "";
+            int parkingLotCapacity = 0;
+            int parkingLotNumFloors = 0;
+            String parkingLotLocation = "";
 
-            //get capacity
+            try{
+                parkingLotName = myTxfField[0].getText();
+                parkingLotCapacity = Integer.parseInt(myTxfField[1].getText());
+                parkingLotNumFloors = Integer.parseInt(myTxfField[2].getText());
+                parkingLotLocation = myTxfField[3].getText();
 
-            //get number of floors
+
+                //fill in missing values
 
 
-            //fill in missing values
+                //reset text fields
+                for (int i=0; i<myTxfField.length; i++) {
+                    myTxfField[i].setText("");
+                }
 
+                //TODO send to db
+
+
+                JOptionPane.showMessageDialog(null, "Success");
+            }catch (Throwable t) {
+                JOptionPane.showMessageDialog(null, "There was a problem");
+            }
         }
         else if(e.getSource() == btnAddParkingSpace)
         {
-            //grab parking lot
+            String parkingLotName = "";
+            int numberOfParkingSpaces = 0;
 
-            //grab monthly rate
+            try{
+                parkingLotName = myTxfField[0].getText();
+                numberOfParkingSpaces = Integer.parseInt(myTxfField[1].getText());
 
-            //fill in missing values
+                //reset text fields
+                for (int i=0; i<myTxfField.length; i++) {
+                    myTxfField[i].setText("");
+                }
+
+                //TODO send to db
+
+
+                JOptionPane.showMessageDialog(null, "Success");
+            }catch (Throwable t) {
+                JOptionPane.showMessageDialog(null, "There was a problem");
+            }
         }
         else if(e.getSource() == btnAddStaffMember)
         {
-            //get name
+            String staffName = "";
+            String licenseNumber = "";
+            int telephoneExtNum = 0;
+            int number = 0;
+            int staffNumber = 0;
 
-            //get telephone extension number
+            try{
+                staffName = myTxfField[0].getText();
+                licenseNumber = myTxfField[1].getText();
+                telephoneExtNum = Integer.parseInt(myTxfField[2].getText());
+                number = Integer.parseInt(myTxfField[3].getText());
+                staffNumber = Integer.parseInt(myTxfField[4].getText());
 
-            //get staff number
+                //reset text fields
+                for (int i=0; i<myTxfField.length; i++) {
+                    myTxfField[i].setText("");
+                }
 
-            //get license number
-
-            //get number
-
-            //fill in missing values
-
+                //TODO send to db
 
 
+                JOptionPane.showMessageDialog(null, "Success");
+            }catch (Throwable t) {
+                JOptionPane.showMessageDialog(null, "There was a problem");
+            }
         }
         else if(e.getSource() == btnEditStaffMember)
         {
-            //get staff member
+            int staffNumber = 0;
+            int newTelephoneExtNum = 0;
+            String newLicenseNum = "";
+            try{
+                staffNumber = Integer.parseInt(myTxfField[0].getText());
+                newTelephoneExtNum = Integer.parseInt(myTxfField[1].getText());
+                newLicenseNum = myTxfField[2].getText();
 
-            //get vehicle license number
+                //reset text fields
+                for (int i=0; i<myTxfField.length; i++) {
+                    myTxfField[i].setText("");
+                }
 
-            //get telephone extension number
+                //TODO send to db
 
-            //fill in missing values
+
+                JOptionPane.showMessageDialog(null, "Success");
+            }catch (Throwable t) {
+                JOptionPane.showMessageDialog(null, "There was a problem");
+            }
 
         }
         else if(e.getSource() == btnAssignParkingSpace)
         {
-            //get staff member
+            int staffNumber = 0;
+            int parkingSpaceNumber = 0;
+            try{
+                staffNumber = Integer.parseInt(myTxfField[0].getText());
+                parkingSpaceNumber = Integer.parseInt(myTxfField[1].getText());
 
-            //get parking space
+                //reset text fields
+                for (int i=0; i<myTxfField.length; i++) {
+                    myTxfField[i].setText("");
+                }
 
-            //fill in missing values
+                //TODO send to db
 
 
-
+                JOptionPane.showMessageDialog(null, "Success");
+            }catch (Throwable t) {
+                JOptionPane.showMessageDialog(null, "There was a problem");
+            }
         }
         else if (e.getSource() == btnAssignParkingSpaceToVisitor)
         {
+            int parkingSpaceNumber = 0;
+            String visitorLicenseNum = "";
+            try{
+                parkingSpaceNumber = Integer.parseInt(myTxfField[0].getText());
+                visitorLicenseNum = myTxfField[1].getText();
 
-            //get parking space
+                //reset text fields
+                for (int i=0; i<myTxfField.length; i++) {
+                    myTxfField[i].setText("");
+                }
 
-            //get visitor license number
+                //TODO send to db
 
-            //fill in missing values
+
+                JOptionPane.showMessageDialog(null, "Success");
+            }catch (Throwable t) {
+                JOptionPane.showMessageDialog(null, "There was a problem");
+            }
         }
 
     }
@@ -567,13 +627,13 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
      */
     @Override
     public void tableChanged(TableModelEvent e) {
-//        int row = e.getFirstRow();
-//        int column = e.getColumn();
-//        TableModel model = (TableModel)e.getSource();
-//        String columnName = model.getColumnName(column);
-//        Object data = model.getValueAt(row, column);
-//
-//        db.updateMovie(row, columnName, data);
+        int row = e.getFirstRow();
+        int column = e.getColumn();
+        TableModel model = (TableModel)e.getSource();
+        String columnName = model.getColumnName(column);
+        Object data = model.getValueAt(row, column);
+
+        db.updateMovie(row, columnName, data);
 
     }
 
