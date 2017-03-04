@@ -225,7 +225,7 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
             data[i][2] = myListOfParkingLots.get(i).getMyCapacity();
             data[i][3] = myListOfParkingLots.get(i).getMyNumberOfFloors();
         }
-        myParkingLotsTable = new JTable(data, myParkingLotColumnNames); //modify by adding data and columnNames
+        myParkingLotsTable = new JTable(data, myParkingLotColumnNames);
         myParkingLotsScrollPane = new JScrollPane(myParkingLotsTable);
         panel.add(myParkingLotsScrollPane);
         myParkingLotsTable.getModel().addTableModelListener(this);
@@ -528,13 +528,23 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
                     myTxfField[i].setText("");
                 }
 
-                //TODO send to db
+                //send to db
+                myParkingAppDB.addParkingSpace(numberOfParkingSpaces, parkingLotName,
+                        myParkingAppDB.getMaxParkingSpaceNumber());
 
 
                 JOptionPane.showMessageDialog(null, "Success");
             }catch (Throwable t) {
                 JOptionPane.showMessageDialog(null, "There was a problem");
             }
+            pnlContent.removeAll();
+            addParkingSpacePanel();
+            pnlContent.add(pnlAddParkingSpace);
+            pnlContent.revalidate();
+            this.repaint();
+
+
+
         }
         else if(e.getSource() == btnAddStaffMember)
         {
@@ -644,7 +654,7 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
         String columnName = model.getColumnName(column);
         Object data = model.getValueAt(row, column);
 
-//        db.updateMovie(row, columnName, data);
+
 
     }
 
