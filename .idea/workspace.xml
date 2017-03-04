@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e5da0f89-f465-44b8-b3ce-be353990b448" name="Default" comment="">
-<<<<<<< HEAD
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/TestSQL.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ParkingApplication/ParkingAppDB.class" afterPath="$PROJECT_DIR$/out/production/ParkingApplication/ParkingAppDB.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ParkingAppDB.java" afterPath="$PROJECT_DIR$/src/ParkingAppDB.java" />
-=======
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI.java" afterPath="$PROJECT_DIR$/src/GUI.java" />
->>>>>>> ed85aa1b2e768a982e1f04fb37c038580e434e25
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TestSQL.java" afterPath="$PROJECT_DIR$/src/TestSQL.java" />
     </list>
     <ignored path="ParkingApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,15 +24,14 @@
     <favorites_list name="ParkingApplication" />
   </component>
   <component name="FileEditorManager">
-<<<<<<< HEAD
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="ParkingAppDB.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/ParkingAppDB.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.56837606">
-                  <caret line="155" column="78" selection-start-line="155" selection-start-column="70" selection-end-line="155" selection-end-column="78" />
+                <state vertical-scroll-proportion="0.66537344">
+                  <caret line="225" column="47" selection-start-line="225" selection-start-column="47" selection-end-line="225" selection-end-column="47" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <marker date="1488600790000" expanded="true" signature="1502:1605" placeholder="select staff... Staff" />
@@ -55,34 +47,17 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="TestSQL.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/TestSQL.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
         </leaf>
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="GUI.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="GUI.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/GUI.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="1.2888889">
-                  <caret line="78" column="24" selection-start-line="78" selection-start-column="12" selection-end-line="78" selection-end-column="24" />
+                <state vertical-scroll-proportion="-31.666666">
+                  <caret line="77" column="0" selection-start-line="78" selection-start-column="12" selection-end-line="78" selection-end-column="24" />
                   <folding>
                     <element signature="docComment;method#GUI#0;class#GUI#0" expanded="false" />
-                    <element signature="docComment;method#createComponents#0;class#GUI#0" expanded="false" />
-                    <element signature="method#createComponents#0;class#GUI#0" expanded="false" />
-                    <element signature="method#addParkingLotPanel#0;class#GUI#0" expanded="false" />
-                    <element signature="method#addStaffMemberPanel#0;class#GUI#0" expanded="false" />
-                    <element signature="docComment;method#main#0;class#GUI#0" expanded="false" />
-                    <element signature="method#main#0;class#GUI#0" expanded="false" />
-                    <element signature="docComment;method#actionPerformed#0;class#GUI#0" expanded="false" />
                     <element signature="docComment;method#tableChanged#0;class#GUI#0" expanded="false" />
                   </folding>
                 </state>
@@ -114,34 +89,19 @@
               </provider>
             </entry>
           </file>
+          <file leaf-file-name="TestSQL.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/TestSQL.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.21266541">
+                  <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
         </leaf>
       </split-second>
     </splitter>
-=======
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GUI.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/GUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2894">
-              <caret line="546" column="16" selection-start-line="546" selection-start-column="16" selection-end-line="546" selection-end-column="16" />
-              <folding>
-                <element signature="docComment;method#GUI#0;class#GUI#0" expanded="false" />
-                <element signature="method#GUI#0;class#GUI#0" expanded="false" />
-                <element signature="docComment;method#createComponents#0;class#GUI#0" expanded="false" />
-                <element signature="method#createComponents#0;class#GUI#0" expanded="false" />
-                <element signature="method#addParkingLotPanel#0;class#GUI#0" expanded="false" />
-                <element signature="method#addStaffMemberPanel#0;class#GUI#0" expanded="false" />
-                <element signature="docComment;method#main#0;class#GUI#0" expanded="false" />
-                <element signature="method#main#0;class#GUI#0" expanded="false" />
-                <element signature="docComment;method#actionPerformed#0;class#GUI#0" expanded="false" />
-                <element signature="docComment;method#tableChanged#0;class#GUI#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
->>>>>>> ed85aa1b2e768a982e1f04fb37c038580e434e25
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -167,14 +127,10 @@
         <option value="$PROJECT_DIR$/src/SpaceBooking.java" />
         <option value="$PROJECT_DIR$/src/StaffMember.java" />
         <option value="$PROJECT_DIR$/src/ParkingLot.java" />
-        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
-<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/GUI.java" />
-        <option value="$PROJECT_DIR$/src/TestSQL.java" />
-=======
->>>>>>> ed85aa1b2e768a982e1f04fb37c038580e434e25
         <option value="$PROJECT_DIR$/src/ParkingAppDB.java" />
-        <option value="$PROJECT_DIR$/src/GUI.java" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
+        <option value="$PROJECT_DIR$/src/TestSQL.java" />
       </list>
     </option>
   </component>
@@ -184,16 +140,10 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-<<<<<<< HEAD
     <option name="x" value="696" />
     <option name="y" value="-1178" />
     <option name="width" value="1920" />
     <option name="height" value="1178" />
-=======
-    <option name="y" value="23" />
-    <option name="width" value="840" />
-    <option name="height" value="1023" />
->>>>>>> ed85aa1b2e768a982e1f04fb37c038580e434e25
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -741,36 +691,25 @@
       <updated>1488556912307</updated>
       <workItem from="1488556915189" duration="20130000" />
       <workItem from="1488594030499" duration="3542000" />
-      <workItem from="1488598241280" duration="2549000" />
+      <workItem from="1488598241280" duration="1968000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-<<<<<<< HEAD
-    <option name="totallyTimeSpent" value="26166000" />
+    <option name="totallyTimeSpent" value="26875000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="696" y="-1178" width="1920" height="1178" extended-state="6" />
-=======
-    <option name="totallyTimeSpent" value="26221000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="0" y="23" width="840" height="1023" extended-state="0" />
->>>>>>> ed85aa1b2e768a982e1f04fb37c038580e434e25
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296501" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-<<<<<<< HEAD
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32780847" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-=======
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32867885" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
->>>>>>> ed85aa1b2e768a982e1f04fb37c038580e434e25
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32780847" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13365282" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -779,7 +718,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39963168" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -810,13 +749,6 @@
           <caret line="510" column="0" selection-start-line="510" selection-start-column="0" selection-end-line="510" selection-end-column="0" />
           <folding>
             <element signature="docComment;method#GUI#0;class#GUI#0" expanded="false" />
-            <element signature="docComment;method#createComponents#0;class#GUI#0" expanded="false" />
-            <element signature="method#createComponents#0;class#GUI#0" expanded="false" />
-            <element signature="method#addParkingLotPanel#0;class#GUI#0" expanded="false" />
-            <element signature="method#addStaffMemberPanel#0;class#GUI#0" expanded="false" />
-            <element signature="docComment;method#main#0;class#GUI#0" expanded="false" />
-            <element signature="method#main#0;class#GUI#0" expanded="false" />
-            <element signature="docComment;method#actionPerformed#0;class#GUI#0" expanded="false" />
             <element signature="docComment;method#tableChanged#0;class#GUI#0" expanded="false" />
           </folding>
         </state>
@@ -910,8 +842,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
           <folding>
-            <element signature="e#586#587#0" expanded="false" />
-            <element signature="e#636#637#0" expanded="false" />
+            <element signature="e#586#587#0" expanded="true" />
+            <element signature="e#636#637#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -958,8 +890,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="3" selection-start-line="0" selection-start-column="3" selection-end-line="0" selection-end-column="3" />
           <folding>
-            <element signature="e#586#587#0" expanded="false" />
-            <element signature="e#636#637#0" expanded="false" />
+            <element signature="e#586#587#0" expanded="true" />
+            <element signature="e#636#637#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -970,14 +902,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="docComment;method#GUI#0;class#GUI#0" expanded="false" />
-            <element signature="method#GUI#0;class#GUI#0" expanded="false" />
-            <element signature="docComment;method#createComponents#0;class#GUI#0" expanded="false" />
-            <element signature="method#createComponents#0;class#GUI#0" expanded="false" />
-            <element signature="method#addParkingLotPanel#0;class#GUI#0" expanded="false" />
-            <element signature="method#addStaffMemberPanel#0;class#GUI#0" expanded="false" />
-            <element signature="docComment;method#main#0;class#GUI#0" expanded="false" />
-            <element signature="method#main#0;class#GUI#0" expanded="false" />
-            <element signature="docComment;method#actionPerformed#0;class#GUI#0" expanded="false" />
             <element signature="docComment;method#tableChanged#0;class#GUI#0" expanded="false" />
           </folding>
         </state>
@@ -1036,8 +960,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
           <folding>
-            <element signature="e#586#587#0" expanded="false" />
-            <element signature="e#636#637#0" expanded="false" />
+            <element signature="e#586#587#0" expanded="true" />
+            <element signature="e#636#637#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1058,17 +982,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-<<<<<<< HEAD
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ParkingSpace.java">
-=======
->>>>>>> ed85aa1b2e768a982e1f04fb37c038580e434e25
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
@@ -1089,39 +1003,37 @@
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2888889">
-          <caret line="78" column="24" selection-start-line="78" selection-start-column="12" selection-end-line="78" selection-end-column="24" />
+        <state vertical-scroll-proportion="-31.666666">
+          <caret line="77" column="0" selection-start-line="78" selection-start-column="12" selection-end-line="78" selection-end-column="24" />
           <folding>
             <element signature="docComment;method#GUI#0;class#GUI#0" expanded="false" />
-            <element signature="docComment;method#createComponents#0;class#GUI#0" expanded="false" />
-            <element signature="method#createComponents#0;class#GUI#0" expanded="false" />
-            <element signature="method#addParkingLotPanel#0;class#GUI#0" expanded="false" />
-            <element signature="method#addStaffMemberPanel#0;class#GUI#0" expanded="false" />
-            <element signature="docComment;method#main#0;class#GUI#0" expanded="false" />
-            <element signature="method#main#0;class#GUI#0" expanded="false" />
-            <element signature="docComment;method#actionPerformed#0;class#GUI#0" expanded="false" />
             <element signature="docComment;method#tableChanged#0;class#GUI#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestSQL.java">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-=======
->>>>>>> ed85aa1b2e768a982e1f04fb37c038580e434e25
+    <entry file="file://$PROJECT_DIR$/src/TestSQL.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21266541">
+          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ParkingAppDB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.56837606">
-          <caret line="155" column="78" selection-start-line="155" selection-start-column="70" selection-end-line="155" selection-end-column="78" />
+        <state vertical-scroll-proportion="0.66537344">
+          <caret line="225" column="47" selection-start-line="225" selection-start-column="47" selection-end-line="225" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
             <marker date="1488600790000" expanded="true" signature="1502:1605" placeholder="select staff... Staff" />
@@ -1132,35 +1044,6 @@
             <marker date="1488600790000" expanded="true" signature="6138:6191" placeholder="insert into toork.ParkingLot... " />
             <marker date="1488600790000" expanded="true" signature="7308:7356" placeholder="insert into toork.Staff... " />
             <marker date="1488600790000" expanded="true" signature="8183:8251" placeholder="update toork... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ParkingLot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2894">
-          <caret line="546" column="16" selection-start-line="546" selection-start-column="16" selection-end-line="546" selection-end-column="16" />
-          <folding>
-            <element signature="docComment;method#GUI#0;class#GUI#0" expanded="false" />
-            <element signature="method#GUI#0;class#GUI#0" expanded="false" />
-            <element signature="docComment;method#createComponents#0;class#GUI#0" expanded="false" />
-            <element signature="method#createComponents#0;class#GUI#0" expanded="false" />
-            <element signature="method#addParkingLotPanel#0;class#GUI#0" expanded="false" />
-            <element signature="method#addStaffMemberPanel#0;class#GUI#0" expanded="false" />
-            <element signature="docComment;method#main#0;class#GUI#0" expanded="false" />
-            <element signature="method#main#0;class#GUI#0" expanded="false" />
-            <element signature="docComment;method#actionPerformed#0;class#GUI#0" expanded="false" />
-            <element signature="docComment;method#tableChanged#0;class#GUI#0" expanded="false" />
           </folding>
         </state>
       </provider>
