@@ -486,14 +486,16 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
                 parkingLotNumFloors = Integer.parseInt(myTxfField[2].getText());
                 parkingLotLocation = myTxfField[3].getText();
 
-
-                //fill in missing values
+                ParkingLot parkingLot = new ParkingLot(parkingLotName, parkingLotLocation,
+                        parkingLotCapacity, parkingLotNumFloors);
 
 
                 //reset text fields
                 for (int i=0; i<myTxfField.length; i++) {
                     myTxfField[i].setText("");
                 }
+                //check if parking lot is already in list of parking lots
+//                ArrayList<P>
 
                 //TODO send to db
 
