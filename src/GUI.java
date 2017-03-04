@@ -373,7 +373,7 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
         pnlAssignParkingSpaceToVisitor = new JPanel();
         pnlAssignParkingSpaceToVisitor.setLayout(new GridLayout(2,3));
         String labelNames[] = {"Enter parking space number: ", "Enter visitor license number: ",
-                "Enter date (DD-MM-YY): ", "Enter staff number: "};
+                "Enter date (YYYY-MM-DD): ", "Enter staff number: "};
         for(int i = 0; i < labelNames.length; i++)
         {
             JPanel panel = new JPanel();
