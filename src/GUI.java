@@ -38,7 +38,7 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
     private JButton btnAddParkingLot, btnAddParkingSpace, btnAddStaffMember, btnEditStaffMember, btnAssignParkingSpace, btnAssignParkingSpaceToVisitor;
     private JPanel pnlButtons, pnlContent;
    // private MovieDB db;
-    private List<Movie> list;
+//    private List<Movie> list;
     private String[] columnNames = {"Title",
             "Year",
             "Length",
@@ -545,9 +545,22 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
                 parkingLotName = myTxfField[0].getText();
                 numberOfParkingSpaces = Integer.parseInt(myTxfField[1].getText());
 
+                //grab current capacity
+                myListOfParkingLots = myParkingAppDB.getParkingLots();
+                int currentCapacity = 0;
+                for(ParkingLot parkingLot : myListOfParkingLots)
+                {
+                    if(parkingLot.getMyLotName().equals(parkingLotName))
+                    {
+                        currentCapacity = parkingLot.getMyCapacity();
+                        break;
+                    }
+                }
 
                 //Update capacity of parking lot
-                
+                int newCapacity = currentCapacity + numberOfParkingSpaces;
+                myParkingAppDB.updateParkingLot(parkingLotName, "capacity", newCapacity);
+
 
                 //add parking space to lot
                 myParkingAppDB.addParkingSpace(numberOfParkingSpaces, parkingLotName,

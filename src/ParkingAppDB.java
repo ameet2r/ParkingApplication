@@ -10,15 +10,13 @@ import java.util.List;
 import java.util.Properties;
 
 public class ParkingAppDB {
-    private static String userName = "toork"; //Change to yours
-    private static String password = "Ammed9";
-    private static String serverName = "cssgate.insttech.washington.edu";
-    private static Connection conn;
-    private List<StaffMember> staffList;
-    private List<StaffSpace> staffSpaceList;
-    private List<ParkingLot> lotList;
-    private List<ParkingSpace> spaceList;
-    private List<SpaceBooking> bookingList;
+    private static String myUserName = "toork"; //Change to yours
+    private static String myPassword = "Ammed9";
+    private static String myServerName = "cssgate.insttech.washington.edu";
+    private static Connection myConn;
+    private List<StaffMember> myStaffList;
+    private List<ParkingLot> myLotList;
+    private List<ParkingSpace> mySpaceList;
 
     /**
      * Creates a sql connection to MySQL using the properties for
@@ -27,26 +25,26 @@ public class ParkingAppDB {
      */
     public static void createConnection() throws SQLException {
         Properties connectionProps = new Properties();
-        connectionProps.put("user", userName);
-        connectionProps.put("password", password);
+        connectionProps.put("user", myUserName);
+        connectionProps.put("password", myPassword);
 
-        conn = DriverManager.getConnection("jdbc:" + "mysql" + "://"
-                + serverName + "/", connectionProps);
+        myConn = DriverManager.getConnection("jdbc:" + "mysql" + "://"
+                + myServerName + "/", connectionProps);
 
         System.out.println("Connected to database");
     }
 
     public List<StaffMember> getStaffMembers() throws SQLException {
-        if (conn == null) {
+        if (myConn == null) {
             createConnection();
         }
         Statement stmt = null;
         String query = "select staffNumber, staffName, telephoneExt, vehicleLicenseNumber "
                 + "from toork.Staff ";
 
-        staffList = new ArrayList<StaffMember>();
+        myStaffList = new ArrayList<StaffMember>();
         try {
-            stmt = conn.createStatement();
+            stmt = myConn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 int staffNumber = rs.getInt("staffNumber");
@@ -55,7 +53,7 @@ public class ParkingAppDB {
                 String vehicleLicenseNumber = rs.getString("vehicleLicenseNumber");
                 StaffMember staffMember = new StaffMember(staffNumber, staffName,
                         telephoneExt, vehicleLicenseNumber);
-                staffList.add(staffMember);
+                myStaffList.add(staffMember);
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -64,20 +62,20 @@ public class ParkingAppDB {
                 stmt.close();
             }
         }
-        return staffList;
+        return myStaffList;
     }
 
     public List<ParkingLot> getParkingLots() throws SQLException {
-        if (conn == null) {
+        if (myConn == null) {
             createConnection();
         }
         Statement stmt = null;
         String query = "select lotName, location, capacity, floors "
                 + "from toork.ParkingLot ";
 
-        lotList = new ArrayList<ParkingLot>();
+        myLotList = new ArrayList<ParkingLot>();
         try {
-            stmt = conn.createStatement();
+            stmt = myConn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 String lotName = rs.getString("lotName");
@@ -86,7 +84,7 @@ public class ParkingAppDB {
                 int floors = rs.getInt("floors");
                 ParkingLot parkingLot = new ParkingLot(lotName, location,
                         capacity, floors);
-                lotList.add(parkingLot);
+                myLotList.add(parkingLot);
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -95,20 +93,20 @@ public class ParkingAppDB {
                 stmt.close();
             }
         }
-        return lotList;
+        return myLotList;
     }
 
     public List<ParkingSpace> getParkingSpaces() throws SQLException {
-        if (conn == null) {
+        if (myConn == null) {
             createConnection();
         }
         Statement stmt = null;
         String query = "select spaceNumber, monthlyRate, lotName, taken "
                 + "from toork.ParkingSpace ";
 
-        spaceList = new ArrayList<ParkingSpace>();
+        mySpaceList = new ArrayList<ParkingSpace>();
         try {
-            stmt = conn.createStatement();
+            stmt = myConn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 int spaceNumber = rs.getInt("spaceNumber");
@@ -117,7 +115,7 @@ public class ParkingAppDB {
                 boolean taken = rs.getBoolean("taken");
                 ParkingSpace parkingSpace = new ParkingSpace(spaceNumber, monthlyRate,
                         lotName, taken);
-                spaceList.add(parkingSpace);
+                mySpaceList.add(parkingSpace);
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -126,12 +124,12 @@ public class ParkingAppDB {
                 stmt.close();
             }
         }
-        return spaceList;
+        return mySpaceList;
     }
 
     public int getMaxParkingSpaceNumber() throws SQLException {
         int num = -1;
-        if (conn == null) {
+        if (myConn == null) {
             createConnection();
         }
         Statement stmt = null;
@@ -139,7 +137,7 @@ public class ParkingAppDB {
                 + "from toork.ParkingSpace ";
 
         try {
-            stmt = conn.createStatement();
+            stmt = myConn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 num = rs.getInt("space");
@@ -156,7 +154,7 @@ public class ParkingAppDB {
 
     public int getMaxBookingNumber() throws SQLException {
         int num = -1;
-        if (conn == null) {
+        if (myConn == null) {
             createConnection();
         }
         Statement stmt = null;
@@ -164,7 +162,7 @@ public class ParkingAppDB {
                 + "from toork.SpaceBooking ";
 
         try {
-            stmt = conn.createStatement();
+            stmt = myConn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 num = rs.getInt("space");
@@ -179,13 +177,13 @@ public class ParkingAppDB {
         return num;
     }
 
-    public void addParkingSpace(int theSpaces, String theLotName, int maxSpace) {
+    public void addParkingSpace(int theSpaces, String theLotName, int theMaxSpace) {
         String sql = "insert into toork.ParkingSpace values " + "(?, ?, ?, ?); ";
 
-        for(int i = maxSpace + 1; i <= theSpaces + maxSpace; i++) {
+        for(int i = theMaxSpace + 1; i <= theSpaces + theMaxSpace; i++) {
             PreparedStatement preparedStatement = null;
             try {
-                preparedStatement = conn.prepareStatement(sql);
+                preparedStatement = myConn.prepareStatement(sql);
                 preparedStatement.setInt(1, i);
                 preparedStatement.setBigDecimal(2, BigDecimal.ZERO);
                 preparedStatement.setString(3, theLotName);
@@ -203,7 +201,7 @@ public class ParkingAppDB {
 
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement = myConn.prepareStatement(sql);
             preparedStatement.setString(1, theParkingLot.getMyLotName());
             preparedStatement.setString(2, theParkingLot.getMyLocation());
             preparedStatement.setInt(3, theParkingLot.getMyCapacity());
@@ -215,15 +213,15 @@ public class ParkingAppDB {
         }
     }
 
-    public StaffMember getStaff(int staffNumber) {
+    public StaffMember getStaff(int theStaffNumber) {
         StaffMember toReturn = null;
         try {
-            staffList = getStaffMembers();
+            myStaffList = getStaffMembers();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        for (StaffMember staffMember : staffList) {
-            if (staffMember.getMyStaffNumber() == staffNumber) {
+        for (StaffMember staffMember : myStaffList) {
+            if (staffMember.getMyStaffNumber() == theStaffNumber) {
                 toReturn = staffMember;
             }
         }
@@ -235,7 +233,7 @@ public class ParkingAppDB {
 
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement = myConn.prepareStatement(sql);
             preparedStatement.setInt(1, theStaffMember.getMyStaffNumber());
             preparedStatement.setString(2, theStaffMember.getMyName());
             preparedStatement.setString(3, theStaffMember.getMyTelephoneExtNumber());
@@ -247,17 +245,17 @@ public class ParkingAppDB {
         }
     }
 
-    public void updateStaff(int row, String columnName, Object data) {
+    public void updateStaff(int theRow, String theColumnName, Object theData) {
 
-        StaffMember staffMember = staffList.get(row);
+        StaffMember staffMember = myStaffList.get(theRow);
         int staffNumber = staffMember.getMyStaffNumber();
-        String sql = "update toork.Staff set " + columnName + " = ?  where staffNumber = ? ";
+        String sql = "update toork.Staff set " + theColumnName + " = ?  where staffNumber = ? ";
         System.out.println(sql);
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = conn.prepareStatement(sql);
-            if (data instanceof String)
-                preparedStatement.setString(1, (String) data);
+            preparedStatement = myConn.prepareStatement(sql);
+            if (theData instanceof String)
+                preparedStatement.setString(1, (String) theData);
             preparedStatement.setInt(2, staffNumber);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -266,18 +264,34 @@ public class ParkingAppDB {
         }
     }
 
-    public void updateParkingSpace(int theSpaceNumber, String columnName, Object data) {
+    public void updateParkingSpace(int theSpaceNumber, String theColumnName, Object theData) {
 
-        String sql = "update toork.ParkingSpace set " + columnName + " = ?  where spaceNumber = ? ";
+        String sql = "update toork.ParkingSpace set " + theColumnName + " = ?  where spaceNumber = ? ";
         System.out.println(sql);
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = conn.prepareStatement(sql);
-            if (data instanceof BigDecimal)
-                preparedStatement.setBigDecimal(1, (BigDecimal) data);
+            preparedStatement = myConn.prepareStatement(sql);
+            if (theData instanceof BigDecimal)
+                preparedStatement.setBigDecimal(1, (BigDecimal) theData);
             else
-                preparedStatement.setBoolean(1, (boolean) data);
+                preparedStatement.setBoolean(1, (boolean) theData);
             preparedStatement.setInt(2, theSpaceNumber);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+            e.printStackTrace();
+        }
+    }
+
+    public void updateParkingLot(String theLotName, String theColumnName, int theData) {
+
+        String sql = "update toork.ParkingSpace set " + theColumnName + " = ?  where lotName = ? ";
+        System.out.println(sql);
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = myConn.prepareStatement(sql);
+            preparedStatement.setInt(1, (int) theData);
+            preparedStatement.setString(2, theLotName);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
@@ -290,7 +304,7 @@ public class ParkingAppDB {
 
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement = myConn.prepareStatement(sql);
             preparedStatement.setInt(1, theStaffNumber);
             preparedStatement.setInt(2, theSpaceNumber);
             preparedStatement.executeUpdate();
@@ -305,7 +319,7 @@ public class ParkingAppDB {
 
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement = myConn.prepareStatement(sql);
             preparedStatement.setInt(1, theSpaceBooking.getMyBookingId());
             preparedStatement.setInt(2, theSpaceBooking.getMyParkingSpaceNumber());
             preparedStatement.setInt(3, theSpaceBooking.getMyStaffNumber());
