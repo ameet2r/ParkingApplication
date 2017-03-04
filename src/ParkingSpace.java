@@ -10,8 +10,17 @@ public class ParkingSpace {
     private int myParkingSpaceNumber;
     private BigDecimal myMonthlyRate;
     private String myLotName;
+    private boolean myTaken;
 
-    public ParkingSpace(int myParkingSpaceNumber, BigDecimal myMonthlyRate, String myLotName) {
+    public boolean isMyTaken() {
+        return myTaken;
+    }
+
+    public void setMyTaken(boolean myTaken) {
+        this.myTaken = myTaken;
+    }
+
+    public ParkingSpace(int myParkingSpaceNumber, BigDecimal myMonthlyRate, String myLotName, boolean myTaken) {
         this.myParkingSpaceNumber = myParkingSpaceNumber;
         this.myMonthlyRate = myMonthlyRate;
         this.myLotName = myLotName;
