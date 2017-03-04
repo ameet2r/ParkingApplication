@@ -128,25 +128,20 @@ public class ParkingAppDB {
         return spaceList;
     }
 
-    public int getMaxParkingNumber() throws SQLException {
+    public int getMaxParkingSpaceNumber() throws SQLException {
+        int num = -1;
         if (conn == null) {
             createConnection();
         }
         Statement stmt = null;
-        String query = "select spaceNumber, monthlyRate, lotName "
+        String query = "select count(spaceNumber) AS 'space' "
                 + "from toork.ParkingSpace ";
 
-        spaceList = new ArrayList<ParkingSpace>();
         try {
             stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                int spaceNumber = rs.getInt("spaceNumber");
-                BigDecimal monthlyRate = rs.getBigDecimal("monthlyRate");
-                String lotName = rs.getString("lotName");
-                ParkingSpace parkingSpace = new ParkingSpace(spaceNumber, monthlyRate,
-                        lotName);
-                spaceList.add(parkingSpace);
+                num = rs.getInt("space");
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -155,11 +150,11 @@ public class ParkingAppDB {
                 stmt.close();
             }
         }
-        return 0;
+        return num;
     }
 
     public void addParkingSpace(int theSpaces, String theLotName, int maxSpace) {
-        String sql = "insert into toork.ParkingSpace values " + "(?, ?, ?, null); ";
+        String sql = "insert into toork.ParkingSpace values " + "(?, ?, ?); ";
 
         for(int i = maxSpace + 1; i <= theSpaces + maxSpace; i++) {
             PreparedStatement preparedStatement = null;
@@ -209,7 +204,7 @@ public class ParkingAppDB {
     }
 
     public void addStaffMember(StaffMember theStaffMember) {
-        String sql = "insert into toork.Staff values " + "(?, ?, ?, ?, null); ";
+        String sql = "insert into toork.Staff values " + "(?, ?, ?, ?); ";
 
         PreparedStatement preparedStatement = null;
         try {
