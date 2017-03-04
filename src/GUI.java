@@ -1,8 +1,3 @@
-/**
- * Author: mmuppa, modified by Ameet2r
- */
-import org.omg.CORBA.INTERNAL;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,79 +7,145 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 import java.math.BigDecimal;
 import java.util.List;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
 
-//TODO finish layouts                                                       DONE
-//TODO grab data from textboxes when user presses add                       DONE
-//TODO modify input to tell user what to input                              DONE
-//TODO add specific column names for each table.
-//TODO change fields to start with my
-
-
-
+/**
+ * This is the GUI class that displays all of the tables, and allows the user to interact with the database.
+ * Author: mmuppa, modified by Toork (Karanbir Toor), Ameet2r (Ameet Toor)
+ */
 public class GUI extends JFrame implements ActionListener, TableModelListener
 {
-
+    /**
+     * The serial id of this class.
+     */
     private static final long serialVersionUID = 1779520078061383929L;
-    private JButton btnAddParkingLotView, btnAddParkingSpaceView, btnAddStaffMemberView, btnEditStaffMemberView, btnAssignParkingSpaceView, btnAssignParkingSpaceToVisitorView;
-    private JButton btnAddParkingLot, btnAddParkingSpace, btnAddStaffMember, btnEditStaffMember, btnAssignParkingSpace, btnAssignParkingSpaceToVisitor;
-    private JPanel pnlButtons, pnlContent;
-   // private MovieDB db;
-//    private List<Movie> list;
-    private String[] columnNames = {"Title",
-            "Year",
-            "Length",
-            "Genre",
-            "StudioName"};
 
+    /**
+     * Buttons that are at the top of the gui that allow the user to change the view of the gui.
+     */
+    private JButton myBtnAddParkingLotView, myBtnAddParkingSpaceView, myBtnAddStaffMemberView, myBtnEditStaffMemberView, myBtnAssignParkingSpaceView, myBtnAssignParkingSpaceToVisitorView;
+
+    /**
+     * Buttons that are in each view that allow the user to submit whatever they are changing.
+     */
+    private JButton myBtnAddParkingLot, myBtnAddParkingSpace, myBtnAddStaffMember, myBtnEditStaffMember, myBtnAssignParkingSpace, myBtnAssignParkingSpaceToVisitor;
+
+    /**
+     * JPanels that show the content of the gui.
+     * myPnlButtons shows the buttons on the top of the gui.
+     * myPnlContent shows the content under the buttons.
+     */
+    private JPanel myPnlButtons, myPnlContent;
+
+    /**
+     * Names for columns in the parking lot tables.
+     */
     private String[] myParkingLotColumnNames = {"lotName", "location", "capacity", "floors"};
+
+    /**
+     * Names for columns in the parking space tables.
+     */
     private String[] myParkingSpaceColumnNames = {"spaceNumber", "monthlyRate", "lotName", "isTaken"};
+
+    /**
+     * Names for columns in the staff tables.
+     */
     private String[] myStaffColumnNames = {"staffNumber", "staffName", "telephoneExt", "vehicleLicenseNumber"};
 
-    private Object[][] data;
-    private JTable table;
-    private JScrollPane scrollPane;
-    private JPanel pnlSearch;
-    private JLabel lblTitle;;
-    private JTextField txfTitle;
-    private JButton btnTitleSearch;
+    /**
+     * 2D Object array that holds the data for the tables each time the tables need to be updated.
+     */
+    private Object[][] myData;
 
-    private JPanel pnlAdd;
+    /**
+     * JLabel array that holds all of the labels that give directions of what to input into the JTextFields.
+     */
     private JLabel[] myTxfLabel = new JLabel[5];
+
+    /**
+     * The JTextFields that will take input from the user.
+     */
     private JTextField[] myTxfField = new JTextField[5];
-    private JButton btnAddMovie;
 
-    private JPanel pnlAddParkingLot;
-    private JPanel pnlAddParkingSpace;
-    private JPanel pnlAddStaffMember;
-    private JPanel pnlEditStaffMember;
-    private JPanel pnlAssignParkingSpace;
-    private JPanel pnlAssignParkingSpaceToVisitor;
+    /**
+     * The Add Parking Lot panel.
+     */
+    private JPanel myPnlAddParkingLot;
 
+    /**
+     * The Add Parking Space panel.
+     */
+    private JPanel myPnlAddParkingSpace;
+
+    /**
+     * The Add Staff member panel.
+     */
+    private JPanel myPnlAddStaffMember;
+
+    /**
+     * The Edit Staff member panel.
+     */
+    private JPanel myPnlEditStaffMember;
+
+    /**
+     * The Assign Parking Space panel.
+     */
+    private JPanel myPnlAssignParkingSpace;
+
+    /**
+     * The Assign Parking Space to Visitor panel.
+     */
+    private JPanel myPnlAssignParkingSpaceToVisitor;
+
+    /**
+     * The table that holds the staff members.
+     */
     private JTable myStaffTable;
+
+    /**
+     * The table that holds the parking spaces.
+     */
     private JTable myParkingSpacesTable;
+
+    /**
+     * The table that holds the parking lots.
+     */
     private JTable myParkingLotsTable;
 
+    /**
+     * The JScrollPane that will hold the staff table.
+     */
     private JScrollPane myStaffScrollPane;
+
+    /**
+     * The JScrollPane that will hold the Parking spaces tables.
+     */
     private JScrollPane myParkingSpacesScrollPane;
+
+    /**
+     * The JScrollPane that will hold the parking lots table.
+     */
     private JScrollPane myParkingLotsScrollPane;
 
+    /**
+     * The database class that connects to the database that holds all the tables we need to access.
+     */
     private ParkingAppDB myParkingAppDB;
 
+    /**
+     * List of parking lots.
+     */
     private List<ParkingLot> myListOfParkingLots;
+
+    /**
+     * List of staff members.
+     */
     private List<StaffMember> myListOfStaffMembers;
+
+    /**
+     * List of parking spaces.
+     */
     private List<ParkingSpace> myListOfParkingSpaces;
-
-
-
 
 
 
@@ -105,58 +166,57 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
         {
             e.printStackTrace();
         }
-        data = new Object[myListOfParkingLots.size()][myParkingLotColumnNames.length];
+        myData = new Object[myListOfParkingLots.size()][myParkingLotColumnNames.length];
         for (int i=0; i<myListOfParkingLots.size(); i++) {
-            data[i][0] = myListOfParkingLots.get(i).getMyLotName();
-            data[i][1] = myListOfParkingLots.get(i).getMyLocation();
-            data[i][2] = myListOfParkingLots.get(i).getMyCapacity();
-            data[i][3] = myListOfParkingLots.get(i).getMyNumberOfFloors();
+            myData[i][0] = myListOfParkingLots.get(i).getMyLotName();
+            myData[i][1] = myListOfParkingLots.get(i).getMyLocation();
+            myData[i][2] = myListOfParkingLots.get(i).getMyCapacity();
+            myData[i][3] = myListOfParkingLots.get(i).getMyNumberOfFloors();
         }
         createComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-//        setUndecorated(true);
         setVisible(true);
     }
 
     /**
-     * Creates panels for Movie list, search, add and adds the corresponding
-     * components to each panel.
-     * Author: mmuppa, modified by ameet2r
+     * Creates panels for "Add Parking lot", "Add Parking Space", "Add Staff Member", "Edit Staff Member",
+     * "Assign Parking Space", "Assign parking space to visitor" and assigns panels to each panel.
+     * Author: mmuppa, modified by Ameet Toor, Karanbir Toor
      */
     private void createComponents()
     {
-        pnlContent = new JPanel();
-        pnlButtons = new JPanel();
+        myPnlContent = new JPanel();
+        myPnlButtons = new JPanel();
 
-        btnAddParkingLotView = new JButton("Add Parking Lot");
-        btnAddParkingLotView.addActionListener(this);
+        myBtnAddParkingLotView = new JButton("Add Parking Lot");
+        myBtnAddParkingLotView.addActionListener(this);
 
-        btnAddParkingSpaceView = new JButton("Add Parking Space");
-        btnAddParkingSpaceView.addActionListener(this);
+        myBtnAddParkingSpaceView = new JButton("Add Parking Space");
+        myBtnAddParkingSpaceView.addActionListener(this);
 
-        btnAddStaffMemberView = new JButton("Add Staff Member");
-        btnAddStaffMemberView.addActionListener(this);
+        myBtnAddStaffMemberView = new JButton("Add Staff Member");
+        myBtnAddStaffMemberView.addActionListener(this);
 
-        btnEditStaffMemberView = new JButton("Edit Staff Member");
-        btnEditStaffMemberView.addActionListener(this);
+        myBtnEditStaffMemberView = new JButton("Edit Staff Member");
+        myBtnEditStaffMemberView.addActionListener(this);
 
-        btnAssignParkingSpaceView = new JButton("Assign Parking Space");
-        btnAssignParkingSpaceView.addActionListener(this);
+        myBtnAssignParkingSpaceView = new JButton("Assign Parking Space");
+        myBtnAssignParkingSpaceView.addActionListener(this);
 
-        btnAssignParkingSpaceToVisitorView = new JButton("Assign parking space to visitor");
-        btnAssignParkingSpaceToVisitorView.addActionListener(this);
+        myBtnAssignParkingSpaceToVisitorView = new JButton("Assign parking space to visitor");
+        myBtnAssignParkingSpaceToVisitorView.addActionListener(this);
 
-        pnlButtons.add(btnAddParkingLotView);
-        pnlButtons.add(btnAddParkingSpaceView);
-        pnlButtons.add(btnAddStaffMemberView);
-        pnlButtons.add(btnEditStaffMemberView);
-        pnlButtons.add(btnAssignParkingSpaceView);
-        pnlButtons.add(btnAssignParkingSpaceToVisitorView);
-        add(pnlButtons, BorderLayout.NORTH);
+        myPnlButtons.add(myBtnAddParkingLotView);
+        myPnlButtons.add(myBtnAddParkingSpaceView);
+        myPnlButtons.add(myBtnAddStaffMemberView);
+        myPnlButtons.add(myBtnEditStaffMemberView);
+        myPnlButtons.add(myBtnAssignParkingSpaceView);
+        myPnlButtons.add(myBtnAssignParkingSpaceToVisitorView);
+        add(myPnlButtons, BorderLayout.NORTH);
 
         //Add parking lot panel
         addParkingLotPanel();
-        add(pnlContent, BorderLayout.CENTER);
+        add(myPnlContent, BorderLayout.CENTER);
 
         //add parking space panel
         addParkingSpacePanel();
@@ -174,10 +234,14 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
         assignParkingSpaceToVisitorPanel();
     }
 
+    /**
+     * Adds the panels that correspond to the "Add Parking Lot" section of the gui to the add parking lot panel.
+     * Author: mmuppa, modified by Ameet Toor, Karanbir Toor
+     */
     private void addParkingLotPanel()
     {
-        pnlAddParkingLot = new JPanel();
-        pnlAddParkingLot.setLayout(new GridLayout(4,0));
+        myPnlAddParkingLot = new JPanel();
+        myPnlAddParkingLot.setLayout(new GridLayout(4,0));
         String labelNames[] = {"Enter Lot Name: ", "Enter Lot Capacity", "Enter Number of floors: ", "Enter location: "};
         for(int i = 0; i < labelNames.length; i++)
         {
@@ -186,19 +250,23 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
             myTxfField[i] = new JTextField(25);
             panel.add(myTxfLabel[i]);
             panel.add(myTxfField[i]);
-            pnlAddParkingLot.add(panel);
+            myPnlAddParkingLot.add(panel);
         }
         JPanel panel = new JPanel();
-        btnAddParkingLot = new JButton("Add");
-        btnAddParkingLot.addActionListener(this);
-        panel.add(btnAddParkingLot);
-        pnlAddParkingLot.add(panel);
+        myBtnAddParkingLot = new JButton("Submit");
+        myBtnAddParkingLot.addActionListener(this);
+        panel.add(myBtnAddParkingLot);
+        myPnlAddParkingLot.add(panel);
     }
 
+    /**
+     * Adds the panels that correspond to the "Add Parking Space" section of the gui to the add parking space panel.
+     * Author: mmuppa, modified by Ameet Toor, Karanbir Toor
+     */
     private void addParkingSpacePanel()
     {
-        pnlAddParkingSpace = new JPanel();
-        pnlAddParkingSpace.setLayout(new GridLayout(3,0));
+        myPnlAddParkingSpace = new JPanel();
+        myPnlAddParkingSpace.setLayout(new GridLayout(3,0));
         String labelNames[] = {"Enter Lot name: ", "Enter how many spaces to add: "};
         for(int i = 0; i < labelNames.length; i++)
         {
@@ -207,40 +275,43 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
             myTxfField[i] = new JTextField(25);
             panel.add(myTxfLabel[i]);
             panel.add(myTxfField[i]);
-            pnlAddParkingSpace.add(panel);
+            myPnlAddParkingSpace.add(panel);
         }
         JPanel panel = new JPanel();
-        btnAddParkingSpace = new JButton("Add");
-        btnAddParkingSpace.addActionListener(this);
-        panel.add(btnAddParkingSpace);
-        pnlAddParkingSpace.add(panel);
+        myBtnAddParkingSpace = new JButton("Submit");
+        myBtnAddParkingSpace.addActionListener(this);
+        panel.add(myBtnAddParkingSpace);
+        myPnlAddParkingSpace.add(panel);
 
         panel = new JPanel();
         //show parking lots scroll pane
         try {
             myListOfParkingLots = myParkingAppDB.getParkingLots();
         } catch (SQLException e1) {
-            // TODO Auto-generated catch block
             e1.printStackTrace();
         }
-        data = new Object[myListOfParkingLots.size()][myParkingLotColumnNames.length];
+        myData = new Object[myListOfParkingLots.size()][myParkingLotColumnNames.length];
         for (int i=0; i<myListOfParkingLots.size(); i++) {
-            data[i][0] = myListOfParkingLots.get(i).getMyLotName();
-            data[i][1] = myListOfParkingLots.get(i).getMyLocation();
-            data[i][2] = myListOfParkingLots.get(i).getMyCapacity();
-            data[i][3] = myListOfParkingLots.get(i).getMyNumberOfFloors();
+            myData[i][0] = myListOfParkingLots.get(i).getMyLotName();
+            myData[i][1] = myListOfParkingLots.get(i).getMyLocation();
+            myData[i][2] = myListOfParkingLots.get(i).getMyCapacity();
+            myData[i][3] = myListOfParkingLots.get(i).getMyNumberOfFloors();
         }
-        myParkingLotsTable = new JTable(data, myParkingLotColumnNames);
+        myParkingLotsTable = new JTable(myData, myParkingLotColumnNames);
         myParkingLotsScrollPane = new JScrollPane(myParkingLotsTable);
         panel.add(myParkingLotsScrollPane);
         myParkingLotsTable.getModel().addTableModelListener(this);
-        pnlAddParkingSpace.add(panel);
+        myPnlAddParkingSpace.add(panel);
     }
 
+    /**
+     * Adds the panels that correspond to the "Add Staff Member" section of the gui to the add staff member panel.
+     * Author: mmuppa, modified by Ameet Toor, Karanbir Toor
+     */
     private void addStaffMemberPanel()
     {
-        pnlAddStaffMember = new JPanel();
-        pnlAddStaffMember.setLayout( new GridLayout(6,2));
+        myPnlAddStaffMember = new JPanel();
+        myPnlAddStaffMember.setLayout( new GridLayout(6,2));
         String labelNames[] = {"Enter Name: ", "Enter license number: ", "Enter Telephone Extension Number: ", "Enter Staff Number: "};
         for(int i = 0; i < labelNames.length; i++)
         {
@@ -249,19 +320,23 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
             myTxfField[i] = new JTextField(25);
             panel.add(myTxfLabel[i]);
             panel.add(myTxfField[i]);
-            pnlAddStaffMember.add(panel);
+            myPnlAddStaffMember.add(panel);
         }
         JPanel panel = new JPanel();
-        btnAddStaffMember = new JButton("Add");
-        btnAddStaffMember.addActionListener(this);
-        panel.add(btnAddStaffMember);
-        pnlAddStaffMember.add(panel);
+        myBtnAddStaffMember = new JButton("Submit");
+        myBtnAddStaffMember.addActionListener(this);
+        panel.add(myBtnAddStaffMember);
+        myPnlAddStaffMember.add(panel);
     }
 
+    /**
+     * Adds the panels that correspond to the "Edit Staff Member" section of the gui to the edit staff member panel.
+     * Author: mmuppa, modified by Ameet Toor, Karanbir Toor
+     */
     private void editStaffMemberPanel()
     {
-        pnlEditStaffMember = new JPanel();
-        pnlEditStaffMember.setLayout(new GridLayout(2,0));
+        myPnlEditStaffMember = new JPanel();
+        myPnlEditStaffMember.setLayout(new GridLayout(2,0));
         String labelNames[] = {"Enter Staff number: ", "Enter new telephone extension number: ", "Enter new vehicle license number: "};
         for(int i = 0; i < labelNames.length; i++)
         {
@@ -271,42 +346,43 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
             myTxfField[i] = new JTextField(25);
             panel.add(myTxfLabel[i]);
             panel.add(myTxfField[i]);
-            pnlEditStaffMember.add(panel);
+            myPnlEditStaffMember.add(panel);
         }
         JPanel panel = new JPanel();
-        btnEditStaffMember = new JButton("Add");
-        btnEditStaffMember.addActionListener(this);
-        panel.add(btnEditStaffMember);
-        pnlEditStaffMember.add(panel);
-
+        myBtnEditStaffMember = new JButton("Submit");
+        myBtnEditStaffMember.addActionListener(this);
+        panel.add(myBtnEditStaffMember);
+        myPnlEditStaffMember.add(panel);
 
         //add staff table
         panel = new JPanel();
-        //TODO remove and add real data
         try {
             myListOfStaffMembers = myParkingAppDB.getStaffMembers();
         } catch (SQLException e1) {
-            // TODO Auto-generated catch block
             e1.printStackTrace();
         }
-        data = new Object[myListOfStaffMembers.size()][myStaffColumnNames.length];
+        myData = new Object[myListOfStaffMembers.size()][myStaffColumnNames.length];
         for (int i=0; i<myListOfStaffMembers.size(); i++) {
-            data[i][0] = myListOfStaffMembers.get(i).getMyStaffNumber();
-            data[i][1] = myListOfStaffMembers.get(i).getMyName();
-            data[i][2] = myListOfStaffMembers.get(i).getMyTelephoneExtNumber();
-            data[i][3] = myListOfStaffMembers.get(i).getMyVehicleLicenseNumber();
+            myData[i][0] = myListOfStaffMembers.get(i).getMyStaffNumber();
+            myData[i][1] = myListOfStaffMembers.get(i).getMyName();
+            myData[i][2] = myListOfStaffMembers.get(i).getMyTelephoneExtNumber();
+            myData[i][3] = myListOfStaffMembers.get(i).getMyVehicleLicenseNumber();
         }
-        myStaffTable = new JTable(data, myStaffColumnNames);
+        myStaffTable = new JTable(myData, myStaffColumnNames);
         myStaffScrollPane = new JScrollPane(myStaffTable);
         panel.add(myStaffScrollPane);
         myStaffTable.getModel().addTableModelListener(this);
-        pnlEditStaffMember.add(panel);
+        myPnlEditStaffMember.add(panel);
     }
 
+    /**
+     * Adds the panels that correspond to the "Assign Parking Space" section of the gui to the assign parking space panel.
+     * Author: mmuppa, modified by Ameet Toor, Karanbir Toor
+     */
     private void assignParkingSpacePanel()
     {
-        pnlAssignParkingSpace = new JPanel();
-        pnlAssignParkingSpace.setLayout(new GridLayout(2,3));
+        myPnlAssignParkingSpace = new JPanel();
+        myPnlAssignParkingSpace.setLayout(new GridLayout(2,3));
         String labelNames[] = {"Enter staff number: ", "Enter parking space number: ", "Enter monthly rate: "};
         for(int i = 0; i < labelNames.length; i++)
         {
@@ -315,35 +391,33 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
             myTxfField[i] = new JTextField(25);
             panel.add(myTxfLabel[i]);
             panel.add(myTxfField[i]);
-            pnlAssignParkingSpace.add(panel);
+            myPnlAssignParkingSpace.add(panel);
         }
         JPanel panel = new JPanel();
-        btnAssignParkingSpace = new JButton("Add");
-        btnAssignParkingSpace.addActionListener(this);
-        panel.add(btnAssignParkingSpace);
-        pnlAssignParkingSpace.add(panel);
+        myBtnAssignParkingSpace = new JButton("Submit");
+        myBtnAssignParkingSpace.addActionListener(this);
+        panel.add(myBtnAssignParkingSpace);
+        myPnlAssignParkingSpace.add(panel);
 
         //add list of staff
         panel = new JPanel();
-        //TODO remove and add real data
         try {
             myListOfStaffMembers = myParkingAppDB.getStaffMembers();
         } catch (SQLException e1) {
-            // TODO Auto-generated catch block
             e1.printStackTrace();
         }
-        data = new Object[myListOfStaffMembers.size()][myStaffColumnNames.length];
+        myData = new Object[myListOfStaffMembers.size()][myStaffColumnNames.length];
         for (int i=0; i<myListOfStaffMembers.size(); i++) {
-            data[i][0] = myListOfStaffMembers.get(i).getMyStaffNumber();
-            data[i][1] = myListOfStaffMembers.get(i).getMyName();
-            data[i][2] = myListOfStaffMembers.get(i).getMyTelephoneExtNumber();
-            data[i][3] = myListOfStaffMembers.get(i).getMyVehicleLicenseNumber();
+            myData[i][0] = myListOfStaffMembers.get(i).getMyStaffNumber();
+            myData[i][1] = myListOfStaffMembers.get(i).getMyName();
+            myData[i][2] = myListOfStaffMembers.get(i).getMyTelephoneExtNumber();
+            myData[i][3] = myListOfStaffMembers.get(i).getMyVehicleLicenseNumber();
         }
-        myStaffTable = new JTable(data, myStaffColumnNames);
+        myStaffTable = new JTable(myData, myStaffColumnNames);
         myStaffScrollPane = new JScrollPane(myStaffTable);
         panel.add(myStaffScrollPane);
         myStaffTable.getModel().addTableModelListener(this);
-        pnlAssignParkingSpace.add(panel);
+        myPnlAssignParkingSpace.add(panel);
 
 
         //add list of parking spaces
@@ -351,27 +425,31 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
         try {
             myListOfParkingSpaces = myParkingAppDB.getParkingSpaces();
         } catch (SQLException e1) {
-            // TODO Auto-generated catch block
             e1.printStackTrace();
         }
-        data = new Object[myListOfParkingSpaces.size()][myParkingSpaceColumnNames.length];
+        myData = new Object[myListOfParkingSpaces.size()][myParkingSpaceColumnNames.length];
         for (int i=0; i<myListOfParkingSpaces.size(); i++) {
-                data[i][0] = myListOfParkingSpaces.get(i).getMyParkingSpaceNumber();
-                data[i][1] = myListOfParkingSpaces.get(i).getMyMonthlyRate();
-                data[i][2] = myListOfParkingSpaces.get(i).getMyLotName();
-                data[i][3] = myListOfParkingSpaces.get(i).isMyTaken();
+                myData[i][0] = myListOfParkingSpaces.get(i).getMyParkingSpaceNumber();
+                myData[i][1] = myListOfParkingSpaces.get(i).getMyMonthlyRate();
+                myData[i][2] = myListOfParkingSpaces.get(i).getMyLotName();
+                myData[i][3] = myListOfParkingSpaces.get(i).isMyTaken();
         }
-        myParkingSpacesTable = new JTable(data, myParkingSpaceColumnNames);
+        myParkingSpacesTable = new JTable(myData, myParkingSpaceColumnNames);
         myParkingSpacesScrollPane = new JScrollPane(myParkingSpacesTable);
         panel.add(myParkingSpacesScrollPane);
         myParkingSpacesTable.getModel().addTableModelListener(this);
-        pnlAssignParkingSpace.add(panel);
+        myPnlAssignParkingSpace.add(panel);
     }
 
+    /**
+     * Adds the panels that correspond to the "Assign parking space to visitor" section of the gui
+     * to the assign parking space to visitor panel.
+     * Author: mmuppa, modified by Ameet Toor, Karanbir Toor
+     */
     private void assignParkingSpaceToVisitorPanel()
     {
-        pnlAssignParkingSpaceToVisitor = new JPanel();
-        pnlAssignParkingSpaceToVisitor.setLayout(new GridLayout(2,3));
+        myPnlAssignParkingSpaceToVisitor = new JPanel();
+        myPnlAssignParkingSpaceToVisitor.setLayout(new GridLayout(2,3));
         String labelNames[] = {"space number: ", "license number: ",
                 "date(YYYY-MM-DD): ", "staff number: "};
         for(int i = 0; i < labelNames.length; i++)
@@ -381,13 +459,13 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
             myTxfField[i] = new JTextField(15);
             panel.add(myTxfLabel[i]);
             panel.add(myTxfField[i]);
-            pnlAssignParkingSpaceToVisitor.add(panel);
+            myPnlAssignParkingSpaceToVisitor.add(panel);
         }
         JPanel panel = new JPanel();
-        btnAssignParkingSpaceToVisitor = new JButton("Add");
-        btnAssignParkingSpaceToVisitor.addActionListener(this);
-        panel.add(btnAssignParkingSpaceToVisitor);
-        pnlAssignParkingSpaceToVisitor.add(panel);
+        myBtnAssignParkingSpaceToVisitor = new JButton("Submit");
+        myBtnAssignParkingSpaceToVisitor.addActionListener(this);
+        panel.add(myBtnAssignParkingSpaceToVisitor);
+        myPnlAssignParkingSpaceToVisitor.add(panel);
 
 
         //add list of parking spaces
@@ -397,20 +475,20 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
         } catch (SQLException e1) {
             e1.printStackTrace();
         }
-        data = new Object[myListOfParkingSpaces.size()][myParkingSpaceColumnNames.length];
+        myData = new Object[myListOfParkingSpaces.size()][myParkingSpaceColumnNames.length];
         for (int i=0; i<myListOfParkingSpaces.size(); i++) {
             if(!myListOfParkingSpaces.get(i).isMyTaken()) {
-                data[i][0] = myListOfParkingSpaces.get(i).getMyParkingSpaceNumber();
-                data[i][1] = myListOfParkingSpaces.get(i).getMyMonthlyRate();
-                data[i][2] = myListOfParkingSpaces.get(i).getMyLotName();
-                data[i][3] = myListOfParkingSpaces.get(i).isMyTaken();
+                myData[i][0] = myListOfParkingSpaces.get(i).getMyParkingSpaceNumber();
+                myData[i][1] = myListOfParkingSpaces.get(i).getMyMonthlyRate();
+                myData[i][2] = myListOfParkingSpaces.get(i).getMyLotName();
+                myData[i][3] = myListOfParkingSpaces.get(i).isMyTaken();
             }
         }
-        myParkingSpacesTable = new JTable(data, myParkingSpaceColumnNames);
+        myParkingSpacesTable = new JTable(myData, myParkingSpaceColumnNames);
         myParkingSpacesScrollPane = new JScrollPane(myParkingSpacesTable);
         panel.add(myParkingSpacesScrollPane);
         myParkingSpacesTable.getModel().addTableModelListener(this);
-        pnlAssignParkingSpaceToVisitor.add(panel);
+        myPnlAssignParkingSpaceToVisitor.add(panel);
 
         //add list of staff
         panel = new JPanel();
@@ -419,81 +497,80 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
         } catch (SQLException e1) {
             e1.printStackTrace();
         }
-        data = new Object[myListOfStaffMembers.size()][myStaffColumnNames.length];
+        myData = new Object[myListOfStaffMembers.size()][myStaffColumnNames.length];
         for (int i=0; i<myListOfStaffMembers.size(); i++) {
-            data[i][0] = myListOfStaffMembers.get(i).getMyStaffNumber();
-            data[i][1] = myListOfStaffMembers.get(i).getMyName();
-            data[i][2] = myListOfStaffMembers.get(i).getMyTelephoneExtNumber();
-            data[i][3] = myListOfStaffMembers.get(i).getMyVehicleLicenseNumber();
+            myData[i][0] = myListOfStaffMembers.get(i).getMyStaffNumber();
+            myData[i][1] = myListOfStaffMembers.get(i).getMyName();
+            myData[i][2] = myListOfStaffMembers.get(i).getMyTelephoneExtNumber();
+            myData[i][3] = myListOfStaffMembers.get(i).getMyVehicleLicenseNumber();
         }
-        myStaffTable = new JTable(data, myStaffColumnNames);
+        myStaffTable = new JTable(myData, myStaffColumnNames);
         myStaffScrollPane = new JScrollPane(myStaffTable);
         panel.add(myStaffScrollPane);
         myStaffTable.getModel().addTableModelListener(this);
-        pnlAssignParkingSpaceToVisitor.add(panel);
-
+        myPnlAssignParkingSpaceToVisitor.add(panel);
     }
 
     /**
+     * The main method that creates the GUI object that runs this program.
      * @param args
      */
     public static void main(String[] args)
     {
         GUI gui = new GUI();
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
     }
 
     /**
      * Event handling to change the panels when different tabs are clicked,
-     * add and search buttons are clicked on the corresponding add and search panels.
+     * the submit buttons do .
      */
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if(e.getSource() == btnAddParkingLotView){
-            pnlContent.removeAll();
+        if(e.getSource() == myBtnAddParkingLotView){
+            myPnlContent.removeAll();
             addParkingLotPanel();
-            pnlContent.add(pnlAddParkingLot);
-            pnlContent.revalidate();
+            myPnlContent.add(myPnlAddParkingLot);
+            myPnlContent.revalidate();
             this.repaint();
 
-        } else if (e.getSource() == btnAddParkingSpaceView) {
-            pnlContent.removeAll();
+        } else if (e.getSource() == myBtnAddParkingSpaceView) {
+            myPnlContent.removeAll();
             addParkingSpacePanel();
-            pnlContent.add(pnlAddParkingSpace);
-            pnlContent.revalidate();
+            myPnlContent.add(myPnlAddParkingSpace);
+            myPnlContent.revalidate();
             this.repaint();
-        } else if (e.getSource() == btnAddStaffMemberView) {
+        } else if (e.getSource() == myBtnAddStaffMemberView) {
 
-            pnlContent.removeAll();
+            myPnlContent.removeAll();
             addStaffMemberPanel();
-            pnlContent.add(pnlAddStaffMember);
-            pnlContent.revalidate();
+            myPnlContent.add(myPnlAddStaffMember);
+            myPnlContent.revalidate();
             this.repaint();
 
-        } else if (e.getSource() == btnEditStaffMemberView) {
-            pnlContent.removeAll();
+        } else if (e.getSource() == myBtnEditStaffMemberView) {
+            myPnlContent.removeAll();
             editStaffMemberPanel();
-            pnlContent.add(pnlEditStaffMember);
-            pnlContent.revalidate();
+            myPnlContent.add(myPnlEditStaffMember);
+            myPnlContent.revalidate();
             this.repaint();
-        } else if (e.getSource() == btnAssignParkingSpaceView) {
-            pnlContent.removeAll();
+        } else if (e.getSource() == myBtnAssignParkingSpaceView) {
+            myPnlContent.removeAll();
             assignParkingSpacePanel();
-            pnlContent.add(pnlAssignParkingSpace);
-            pnlContent.revalidate();
+            myPnlContent.add(myPnlAssignParkingSpace);
+            myPnlContent.revalidate();
             this.repaint();
         }
-        else if (e.getSource() == btnAssignParkingSpaceToVisitorView)
+        else if (e.getSource() == myBtnAssignParkingSpaceToVisitorView)
         {
-            pnlContent.removeAll();
+            myPnlContent.removeAll();
             assignParkingSpaceToVisitorPanel();
-            pnlContent.add(pnlAssignParkingSpaceToVisitor);
-            pnlContent.revalidate();
+            myPnlContent.add(myPnlAssignParkingSpaceToVisitor);
+            myPnlContent.revalidate();
             this.repaint();
         }
-        else if(e.getSource() == btnAddParkingLot)
+        else if(e.getSource() == myBtnAddParkingLot)
         {
             String parkingLotName = "";
             int parkingLotCapacity = 0;
@@ -536,7 +613,7 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
                 JOptionPane.showMessageDialog(null, "There was a problem");
             }
         }
-        else if(e.getSource() == btnAddParkingSpace)
+        else if(e.getSource() == myBtnAddParkingSpace)
         {
             String parkingLotName = "";
             int numberOfParkingSpaces = 0;
@@ -571,16 +648,16 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
             }catch (Throwable t) {
                 JOptionPane.showMessageDialog(null, "There was a problem");
             }
-            pnlContent.removeAll();
+            myPnlContent.removeAll();
             addParkingSpacePanel();
-            pnlContent.add(pnlAddParkingSpace);
-            pnlContent.revalidate();
+            myPnlContent.add(myPnlAddParkingSpace);
+            myPnlContent.revalidate();
             this.repaint();
 
 
 
         }
-        else if(e.getSource() == btnAddStaffMember)
+        else if(e.getSource() == myBtnAddStaffMember)
         {
             String staffName = "";
             String licenseNumber = "";
@@ -609,7 +686,7 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
                 JOptionPane.showMessageDialog(null, "There was a problem");
             }
         }
-        else if(e.getSource() == btnEditStaffMember)
+        else if(e.getSource() == myBtnEditStaffMember)
         {
             int staffNumber = 0;
             String newTelephoneExtNum = "";
@@ -659,13 +736,13 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
             }
 
 
-            pnlContent.removeAll();
+            myPnlContent.removeAll();
             editStaffMemberPanel();
-            pnlContent.add(pnlEditStaffMember);
-            pnlContent.revalidate();
+            myPnlContent.add(myPnlEditStaffMember);
+            myPnlContent.revalidate();
             this.repaint();
         }
-        else if(e.getSource() == btnAssignParkingSpace)
+        else if(e.getSource() == myBtnAssignParkingSpace)
         {
             int staffNumber = 0;
             int parkingSpaceNumber = 0;
@@ -686,13 +763,13 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
             }catch (Throwable t) {
                 JOptionPane.showMessageDialog(null, "There was a problem");
             }
-            pnlContent.removeAll();
+            myPnlContent.removeAll();
             assignParkingSpacePanel();
-            pnlContent.add(pnlAssignParkingSpace);
-            pnlContent.revalidate();
+            myPnlContent.add(myPnlAssignParkingSpace);
+            myPnlContent.revalidate();
             this.repaint();
         }
-        else if (e.getSource() == btnAssignParkingSpaceToVisitor)
+        else if (e.getSource() == myBtnAssignParkingSpaceToVisitor)
         {
             int parkingSpaceNumber = 0;
             String visitorLicenseNum = "";
@@ -719,10 +796,10 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
                 JOptionPane.showMessageDialog(null, "There was a problem");
             }
 
-            pnlContent.removeAll();
+            myPnlContent.removeAll();
             assignParkingSpaceToVisitorPanel();
-            pnlContent.add(pnlAssignParkingSpaceToVisitor);
-            pnlContent.revalidate();
+            myPnlContent.add(myPnlAssignParkingSpaceToVisitor);
+            myPnlContent.revalidate();
             this.repaint();
         }
 
