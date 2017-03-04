@@ -1,3 +1,4 @@
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -97,8 +98,86 @@ public class ParkingAppDB {
         return lotList;
     }
 
+    public List<ParkingSpace> getParkingSpaces() throws SQLException {
+        if (conn == null) {
+            createConnection();
+        }
+        Statement stmt = null;
+        String query = "select spaceNumber, monthlyRate, lotName "
+                + "from toork.ParkingSpace ";
+
+        spaceList = new ArrayList<ParkingSpace>();
+        try {
+            stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                int spaceNumber = rs.getInt("spaceNumber");
+                BigDecimal monthlyRate = rs.getBigDecimal("monthlyRate");
+                String lotName = rs.getString("lotName");
+                ParkingSpace parkingSpace = new ParkingSpace(spaceNumber, monthlyRate,
+                        lotName);
+                spaceList.add(parkingSpace);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            if (stmt != null) {
+                stmt.close();
+            }
+        }
+        return spaceList;
+    }
+
+    public int getMaxParkingNumber() throws SQLException {
+        if (conn == null) {
+            createConnection();
+        }
+        Statement stmt = null;
+        String query = "select spaceNumber, monthlyRate, lotName "
+                + "from toork.ParkingSpace ";
+
+        spaceList = new ArrayList<ParkingSpace>();
+        try {
+            stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                int spaceNumber = rs.getInt("spaceNumber");
+                BigDecimal monthlyRate = rs.getBigDecimal("monthlyRate");
+                String lotName = rs.getString("lotName");
+                ParkingSpace parkingSpace = new ParkingSpace(spaceNumber, monthlyRate,
+                        lotName);
+                spaceList.add(parkingSpace);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            if (stmt != null) {
+                stmt.close();
+            }
+        }
+        return 0;
+    }
+
+    public void addParkingSpace(int theSpaces, String theLotName, int maxSpace) {
+        String sql = "insert into toork.ParkingSpace values " + "(?, ?, ?, null); ";
+
+        for(int i = maxSpace + 1; i <= theSpaces + maxSpace; i++) {
+            PreparedStatement preparedStatement = null;
+            try {
+                preparedStatement = conn.prepareStatement(sql);
+                preparedStatement.setInt(1, i);
+                preparedStatement.setBigDecimal(2, BigDecimal.ZERO);
+                preparedStatement.setString(3, theLotName);
+                preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                System.out.println(e);
+                e.printStackTrace();
+            }
+        }
+    }
+
     public void addParkingLot(ParkingLot theParkingLot) {
-        String sql = "insert into toork.Movies values " + "(?, ?, ?, ?, null); ";
+        String sql = "insert into toork.ParkingLot values " + "(?, ?, ?, ?, null); ";
 
         PreparedStatement preparedStatement = null;
         try {
@@ -130,7 +209,7 @@ public class ParkingAppDB {
     }
 
     public void addStaffMember(StaffMember theStaffMember) {
-        String sql = "insert into toork.Movies values " + "(?, ?, ?, ?, null); ";
+        String sql = "insert into toork.Staff values " + "(?, ?, ?, ?, null); ";
 
         PreparedStatement preparedStatement = null;
         try {
