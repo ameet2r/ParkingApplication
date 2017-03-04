@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e5da0f89-f465-44b8-b3ce-be353990b448" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/StaffSpace.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ParkingAppDB.java" afterPath="$PROJECT_DIR$/src/ParkingAppDB.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ParkingLot.java" afterPath="$PROJECT_DIR$/src/ParkingLot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ParkingSpace.java" afterPath="$PROJECT_DIR$/src/ParkingSpace.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SpaceBooking.java" afterPath="$PROJECT_DIR$/src/SpaceBooking.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/StaffMember.java" afterPath="$PROJECT_DIR$/src/StaffMember.java" />
-    </list>
+    <list default="true" id="e5da0f89-f465-44b8-b3ce-be353990b448" name="Default" comment="" />
     <ignored path="ParkingApplication.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -36,8 +28,8 @@
           <file leaf-file-name="GUI.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/GUI.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="224">
-                  <caret line="563" column="0" selection-start-line="563" selection-start-column="0" selection-end-line="563" selection-end-column="0" />
+                <state relative-caret-position="404">
+                  <caret line="568" column="0" selection-start-line="568" selection-start-column="0" selection-end-line="568" selection-end-column="0" />
                   <folding>
                     <element signature="docComment;method#GUI#0;class#GUI#0" expanded="false" />
                     <element signature="method#GUI#0;class#GUI#0" expanded="false" />
@@ -678,12 +670,12 @@
       <updated>1488556912307</updated>
       <workItem from="1488556915189" duration="20130000" />
       <workItem from="1488594030499" duration="3542000" />
-      <workItem from="1488598241280" duration="10337000" />
+      <workItem from="1488598241280" duration="10402000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34009000" />
+    <option name="totallyTimeSpent" value="34074000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1023" extended-state="6" />
@@ -1042,8 +1034,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="563" column="0" selection-start-line="563" selection-start-column="0" selection-end-line="563" selection-end-column="0" />
+        <state relative-caret-position="404">
+          <caret line="568" column="0" selection-start-line="568" selection-start-column="0" selection-end-line="568" selection-end-column="0" />
           <folding>
             <element signature="docComment;method#GUI#0;class#GUI#0" expanded="false" />
             <element signature="method#GUI#0;class#GUI#0" expanded="false" />
