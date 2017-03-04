@@ -135,8 +135,33 @@ public class ParkingAppDB {
             createConnection();
         }
         Statement stmt = null;
-        String query = "select count(spaceNumber) AS 'space' "
+        String query = "select max(spaceNumber) AS 'space' "
                 + "from toork.ParkingSpace ";
+
+        try {
+            stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                num = rs.getInt("space");
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            if (stmt != null) {
+                stmt.close();
+            }
+        }
+        return num;
+    }
+
+    public int getMaxBookingNumber() throws SQLException {
+        int num = -1;
+        if (conn == null) {
+            createConnection();
+        }
+        Statement stmt = null;
+        String query = "select max(bookingId) AS 'space' "
+                + "from toork.SpaceBooking ";
 
         try {
             stmt = conn.createStatement();
