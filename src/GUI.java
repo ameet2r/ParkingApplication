@@ -513,9 +513,9 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
 
     /**
      * The main method that creates the GUI object that runs this program.
-     * @param args
+     * @param theArgs The command line arguments.
      */
-    public static void main(String[] args)
+    public static void main(String[] theArgs)
     {
         GUI gui = new GUI();
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -523,25 +523,26 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
 
     /**
      * Event handling to change the panels when different tabs are clicked,
-     * the submit buttons do .
+     * the submit buttons do different things upon click when in the different tabs.
+     * Author: mmuppa, modified by Ameet Toor, Karanbir Toor
      */
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent theEvent) {
 
-        if(e.getSource() == myBtnAddParkingLotView){
+        if(theEvent.getSource() == myBtnAddParkingLotView){
             myPnlContent.removeAll();
             addParkingLotPanel();
             myPnlContent.add(myPnlAddParkingLot);
             myPnlContent.revalidate();
             this.repaint();
 
-        } else if (e.getSource() == myBtnAddParkingSpaceView) {
+        } else if (theEvent.getSource() == myBtnAddParkingSpaceView) {
             myPnlContent.removeAll();
             addParkingSpacePanel();
             myPnlContent.add(myPnlAddParkingSpace);
             myPnlContent.revalidate();
             this.repaint();
-        } else if (e.getSource() == myBtnAddStaffMemberView) {
+        } else if (theEvent.getSource() == myBtnAddStaffMemberView) {
 
             myPnlContent.removeAll();
             addStaffMemberPanel();
@@ -549,20 +550,20 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
             myPnlContent.revalidate();
             this.repaint();
 
-        } else if (e.getSource() == myBtnEditStaffMemberView) {
+        } else if (theEvent.getSource() == myBtnEditStaffMemberView) {
             myPnlContent.removeAll();
             editStaffMemberPanel();
             myPnlContent.add(myPnlEditStaffMember);
             myPnlContent.revalidate();
             this.repaint();
-        } else if (e.getSource() == myBtnAssignParkingSpaceView) {
+        } else if (theEvent.getSource() == myBtnAssignParkingSpaceView) {
             myPnlContent.removeAll();
             assignParkingSpacePanel();
             myPnlContent.add(myPnlAssignParkingSpace);
             myPnlContent.revalidate();
             this.repaint();
         }
-        else if (e.getSource() == myBtnAssignParkingSpaceToVisitorView)
+        else if (theEvent.getSource() == myBtnAssignParkingSpaceToVisitorView)
         {
             myPnlContent.removeAll();
             assignParkingSpaceToVisitorPanel();
@@ -570,7 +571,7 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
             myPnlContent.revalidate();
             this.repaint();
         }
-        else if(e.getSource() == myBtnAddParkingLot)
+        else if(theEvent.getSource() == myBtnAddParkingLot)
         {
             String parkingLotName = "";
             int parkingLotCapacity = 0;
@@ -597,7 +598,6 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
                     }
                 }
 
-
                 //send to db
                 if(canAddParkingLot)
                 {
@@ -606,14 +606,12 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
                     myParkingAppDB.addParkingSpace(parkingLotCapacity, parkingLotName, myParkingAppDB.getMaxParkingSpaceNumber());
                 }
 
-
-
                 JOptionPane.showMessageDialog(null, "Success");
             }catch (Throwable t) {
                 JOptionPane.showMessageDialog(null, "There was a problem");
             }
         }
-        else if(e.getSource() == myBtnAddParkingSpace)
+        else if(theEvent.getSource() == myBtnAddParkingSpace)
         {
             String parkingLotName = "";
             int numberOfParkingSpaces = 0;
@@ -653,11 +651,8 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
             myPnlContent.add(myPnlAddParkingSpace);
             myPnlContent.revalidate();
             this.repaint();
-
-
-
         }
-        else if(e.getSource() == myBtnAddStaffMember)
+        else if(theEvent.getSource() == myBtnAddStaffMember)
         {
             String staffName = "";
             String licenseNumber = "";
@@ -671,22 +666,16 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
                 staffNumber = Integer.parseInt(myTxfField[3].getText());
 
                 StaffMember staffMember = new StaffMember(staffNumber, staffName, telephoneExtNum, licenseNumber);
-                //reset text fields
-//                for (int i=0; i < myTxfField.length; i++) {
-//                    myTxfField[i].setText("");
-//                }
-
 
                 //send to db
                 myParkingAppDB.addStaffMember(staffMember);
-
 
                 JOptionPane.showMessageDialog(null, "Success");
             }catch (Throwable t) {
                 JOptionPane.showMessageDialog(null, "There was a problem");
             }
         }
-        else if(e.getSource() == myBtnEditStaffMember)
+        else if(theEvent.getSource() == myBtnEditStaffMember)
         {
             int staffNumber = 0;
             String newTelephoneExtNum = "";
@@ -695,10 +684,6 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
                 staffNumber = Integer.parseInt(myTxfField[0].getText());
                 newTelephoneExtNum = myTxfField[1].getText();
                 newLicenseNum = myTxfField[2].getText();
-
-//                for (int i=0; i<myTxfField.length; i++) {
-//                    myTxfField[i].setText("");
-//                }
 
                 //compare staff number against list of staff members, find index
                 int indexToUpdate = -1;
@@ -712,21 +697,16 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
                     }
                 }
 
-                //then call updateStaff(index, "vehicleLicenseNumber", newTelephneExtNum);
-                //and updateStaff(index, "telephoneExt", newLicenseNum);
-
                 if(indexToUpdate != -1)
                 {
                     if(!newTelephoneExtNum.equals(""))
                     {
                         myParkingAppDB.updateStaff(indexToUpdate, "telephoneExt", newTelephoneExtNum);
-                        //System.out.println("update telephone");
                     }
 
                     if(!newLicenseNum.equals(""))
                     {
                         myParkingAppDB.updateStaff(indexToUpdate, "vehicleLicenseNumber", newLicenseNum);
-                        //System.out.println("update license num");
                     }
                 }
 
@@ -735,14 +715,13 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
                 JOptionPane.showMessageDialog(null, "There was a problem");
             }
 
-
             myPnlContent.removeAll();
             editStaffMemberPanel();
             myPnlContent.add(myPnlEditStaffMember);
             myPnlContent.revalidate();
             this.repaint();
         }
-        else if(e.getSource() == myBtnAssignParkingSpace)
+        else if(theEvent.getSource() == myBtnAssignParkingSpace)
         {
             int staffNumber = 0;
             int parkingSpaceNumber = 0;
@@ -751,8 +730,6 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
                 staffNumber = Integer.parseInt(myTxfField[0].getText());
                 parkingSpaceNumber = Integer.parseInt(myTxfField[1].getText());
                 monthlyRate = BigDecimal.valueOf(Double.parseDouble(myTxfField[2].getText()));
-
-
 
                 //send to db
                 myParkingAppDB.addStaffSpace(staffNumber, parkingSpaceNumber);
@@ -769,7 +746,7 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
             myPnlContent.revalidate();
             this.repaint();
         }
-        else if (e.getSource() == myBtnAssignParkingSpaceToVisitor)
+        else if (theEvent.getSource() == myBtnAssignParkingSpaceToVisitor)
         {
             int parkingSpaceNumber = 0;
             String visitorLicenseNum = "";
@@ -782,9 +759,6 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
                 date = myTxfField[2].getText();
                 staffNum = Integer.parseInt(myTxfField[3].getText());
 
-
-
-                //TODO send to db
                 SpaceBooking spaceBooking = new SpaceBooking(myParkingAppDB.getMaxBookingNumber() + 1,
                         parkingSpaceNumber, staffNum, visitorLicenseNum, java.sql.Date.valueOf(date));
 
@@ -807,15 +781,14 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
 
     /**
      * Event handling for any cell being changed in the table.
+     * Author: mmuppa, modified by Ameet Toor, Karanbir Toor
      */
     @Override
-    public void tableChanged(TableModelEvent e) {
-        int row = e.getFirstRow();
-        int column = e.getColumn();
-        TableModel model = (TableModel)e.getSource();
+    public void tableChanged(TableModelEvent theEvent) {
+        int row = theEvent.getFirstRow();
+        int column = theEvent.getColumn();
+        TableModel model = (TableModel)theEvent.getSource();
         String columnName = model.getColumnName(column);
         Object data = model.getValueAt(row, column);
-
     }
-
 }
