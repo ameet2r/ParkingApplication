@@ -310,7 +310,7 @@ public class ParkingAppDB {
             preparedStatement.setInt(2, theSpaceBooking.getMyParkingSpaceNumber());
             preparedStatement.setInt(3, theSpaceBooking.getMyStaffNumber());
             preparedStatement.setString(4, theSpaceBooking.getMyLicenseNumber());
-            preparedStatement.setDate(2, theSpaceBooking.getMyDateOfVisit());
+            preparedStatement.setDate(5, theSpaceBooking.getMyDateOfVisit());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);

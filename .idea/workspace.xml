@@ -31,23 +31,23 @@
           <file leaf-file-name="ParkingAppDB.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/ParkingAppDB.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.5274074">
-                  <caret line="152" column="9" selection-start-line="152" selection-start-column="9" selection-end-line="152" selection-end-column="9" />
+                <state vertical-scroll-proportion="0.6888889">
+                  <caret line="312" column="39" selection-start-line="312" selection-start-column="39" selection-end-line="312" selection-end-column="39" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <marker date="1488606843000" expanded="true" signature="1502:1605" placeholder="select staff... Staff" />
-                    <marker date="1488606843000" expanded="true" signature="2678:2763" placeholder="select lotNa... ParkingLot" />
-                    <marker date="1488606843000" expanded="true" signature="3754:3846" placeholder="select space... ParkingSpace" />
-                    <marker date="1488606843000" expanded="true" signature="4899:4978" placeholder="select space... ParkingSpace" />
-                    <marker date="1488606843000" expanded="true" signature="5590:5655" placeholder="select count... ParkingSpace" />
-                    <marker date="1488606843000" expanded="true" signature="5590:5667" placeholder="select max(b... SpaceBooking" />
-                    <marker date="1488606843000" expanded="true" signature="6177:6232" placeholder="insert into toork.ParkingSpace... " />
-                    <marker date="1488606843000" expanded="true" signature="6954:7007" placeholder="insert into toork.ParkingLot... " />
-                    <marker date="1488606843000" expanded="true" signature="8124:8172" placeholder="insert into toork.Staff... " />
-                    <marker date="1488606843000" expanded="true" signature="8999:9067" placeholder="update toork... " />
-                    <marker date="1488606843000" expanded="true" signature="9666:9741" placeholder="update toork... " />
-                    <marker date="1488606843000" expanded="true" signature="10419:10466" placeholder="insert into toork.Staff... " />
-                    <marker date="1488606843000" expanded="true" signature="10960:11018" placeholder="insert into toork.StaffSpace... " />
+                    <marker date="1488607043000" expanded="true" signature="1502:1605" placeholder="select staff... Staff" />
+                    <marker date="1488607043000" expanded="true" signature="2678:2763" placeholder="select lotNa... ParkingLot" />
+                    <marker date="1488607043000" expanded="true" signature="3754:3846" placeholder="select space... ParkingSpace" />
+                    <marker date="1488607043000" expanded="true" signature="4899:4978" placeholder="select space... ParkingSpace" />
+                    <marker date="1488607043000" expanded="true" signature="5590:5655" placeholder="select count... ParkingSpace" />
+                    <marker date="1488607043000" expanded="true" signature="5590:5667" placeholder="select max(b... SpaceBooking" />
+                    <marker date="1488607043000" expanded="true" signature="6177:6232" placeholder="insert into toork.ParkingSpace... " />
+                    <marker date="1488607043000" expanded="true" signature="6954:7007" placeholder="insert into toork.ParkingLot... " />
+                    <marker date="1488607043000" expanded="true" signature="8124:8172" placeholder="insert into toork.Staff... " />
+                    <marker date="1488607043000" expanded="true" signature="8999:9067" placeholder="update toork... " />
+                    <marker date="1488607043000" expanded="true" signature="9666:9741" placeholder="update toork... " />
+                    <marker date="1488607043000" expanded="true" signature="10419:10466" placeholder="insert into toork.Staff... " />
+                    <marker date="1488607043000" expanded="true" signature="10960:11018" placeholder="insert into toork.StaffSpace... " />
                   </folding>
                 </state>
               </provider>
@@ -99,8 +99,8 @@
           <file leaf-file-name="TestSQL.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/TestSQL.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.491453">
-                  <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+                <state vertical-scroll-proportion="0.53418803">
+                  <caret line="25" column="68" selection-start-line="25" selection-start-column="68" selection-end-line="25" selection-end-column="68" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -154,8 +154,8 @@
         <option value="$PROJECT_DIR$/src/GUI.java" />
         <option value="$PROJECT_DIR$/src/ParkingSpace.java" />
         <option value="$PROJECT_DIR$/src/SpaceBooking.java" />
-        <option value="$PROJECT_DIR$/src/TestSQL.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
+        <option value="$PROJECT_DIR$/src/TestSQL.java" />
         <option value="$PROJECT_DIR$/src/ParkingAppDB.java" />
       </list>
     </option>
@@ -722,7 +722,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32168000" />
+    <option name="totallyTimeSpent" value="32384000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="696" y="-1178" width="1920" height="1178" extended-state="6" />
@@ -735,7 +735,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32780847" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32780847" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13365282" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -793,19 +793,19 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1488606843000" expanded="true" signature="1502:1605" placeholder="select staff... Staff" />
-            <marker date="1488606843000" expanded="true" signature="2678:2763" placeholder="select lotNa... ParkingLot" />
-            <marker date="1488606843000" expanded="true" signature="3754:3846" placeholder="select space... ParkingSpace" />
-            <marker date="1488606843000" expanded="true" signature="4899:4978" placeholder="select space... ParkingSpace" />
-            <marker date="1488606843000" expanded="true" signature="5590:5655" placeholder="select count... ParkingSpace" />
-            <marker date="1488606843000" expanded="true" signature="5590:5667" placeholder="select max(b... SpaceBooking" />
-            <marker date="1488606843000" expanded="true" signature="6177:6232" placeholder="insert into toork.ParkingSpace... " />
-            <marker date="1488606843000" expanded="true" signature="6954:7007" placeholder="insert into toork.ParkingLot... " />
-            <marker date="1488606843000" expanded="true" signature="8124:8172" placeholder="insert into toork.Staff... " />
-            <marker date="1488606843000" expanded="true" signature="8999:9067" placeholder="update toork... " />
-            <marker date="1488606843000" expanded="true" signature="9666:9741" placeholder="update toork... " />
-            <marker date="1488606843000" expanded="true" signature="10419:10466" placeholder="insert into toork.Staff... " />
-            <marker date="1488606843000" expanded="true" signature="10960:11018" placeholder="insert into toork.StaffSpace... " />
+            <marker date="1488607043000" expanded="true" signature="1502:1605" placeholder="select staff... Staff" />
+            <marker date="1488607043000" expanded="true" signature="2678:2763" placeholder="select lotNa... ParkingLot" />
+            <marker date="1488607043000" expanded="true" signature="3754:3846" placeholder="select space... ParkingSpace" />
+            <marker date="1488607043000" expanded="true" signature="4899:4978" placeholder="select space... ParkingSpace" />
+            <marker date="1488607043000" expanded="true" signature="5590:5655" placeholder="select count... ParkingSpace" />
+            <marker date="1488607043000" expanded="true" signature="5590:5667" placeholder="select max(b... SpaceBooking" />
+            <marker date="1488607043000" expanded="true" signature="6177:6232" placeholder="insert into toork.ParkingSpace... " />
+            <marker date="1488607043000" expanded="true" signature="6954:7007" placeholder="insert into toork.ParkingLot... " />
+            <marker date="1488607043000" expanded="true" signature="8124:8172" placeholder="insert into toork.Staff... " />
+            <marker date="1488607043000" expanded="true" signature="8999:9067" placeholder="update toork... " />
+            <marker date="1488607043000" expanded="true" signature="9666:9741" placeholder="update toork... " />
+            <marker date="1488607043000" expanded="true" signature="10419:10466" placeholder="insert into toork.Staff... " />
+            <marker date="1488607043000" expanded="true" signature="10960:11018" placeholder="insert into toork.StaffSpace... " />
           </folding>
         </state>
       </provider>
@@ -816,19 +816,19 @@
           <caret line="122" column="60" selection-start-line="122" selection-start-column="60" selection-end-line="122" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1488606843000" expanded="true" signature="1502:1605" placeholder="select staff... Staff" />
-            <marker date="1488606843000" expanded="true" signature="2678:2763" placeholder="select lotNa... ParkingLot" />
-            <marker date="1488606843000" expanded="true" signature="3754:3846" placeholder="select space... ParkingSpace" />
-            <marker date="1488606843000" expanded="true" signature="4899:4978" placeholder="select space... ParkingSpace" />
-            <marker date="1488606843000" expanded="true" signature="5590:5655" placeholder="select count... ParkingSpace" />
-            <marker date="1488606843000" expanded="true" signature="5590:5667" placeholder="select max(b... SpaceBooking" />
-            <marker date="1488606843000" expanded="true" signature="6177:6232" placeholder="insert into toork.ParkingSpace... " />
-            <marker date="1488606843000" expanded="true" signature="6954:7007" placeholder="insert into toork.ParkingLot... " />
-            <marker date="1488606843000" expanded="true" signature="8124:8172" placeholder="insert into toork.Staff... " />
-            <marker date="1488606843000" expanded="true" signature="8999:9067" placeholder="update toork... " />
-            <marker date="1488606843000" expanded="true" signature="9666:9741" placeholder="update toork... " />
-            <marker date="1488606843000" expanded="true" signature="10419:10466" placeholder="insert into toork.Staff... " />
-            <marker date="1488606843000" expanded="true" signature="10960:11018" placeholder="insert into toork.StaffSpace... " />
+            <marker date="1488607043000" expanded="true" signature="1502:1605" placeholder="select staff... Staff" />
+            <marker date="1488607043000" expanded="true" signature="2678:2763" placeholder="select lotNa... ParkingLot" />
+            <marker date="1488607043000" expanded="true" signature="3754:3846" placeholder="select space... ParkingSpace" />
+            <marker date="1488607043000" expanded="true" signature="4899:4978" placeholder="select space... ParkingSpace" />
+            <marker date="1488607043000" expanded="true" signature="5590:5655" placeholder="select count... ParkingSpace" />
+            <marker date="1488607043000" expanded="true" signature="5590:5667" placeholder="select max(b... SpaceBooking" />
+            <marker date="1488607043000" expanded="true" signature="6177:6232" placeholder="insert into toork.ParkingSpace... " />
+            <marker date="1488607043000" expanded="true" signature="6954:7007" placeholder="insert into toork.ParkingLot... " />
+            <marker date="1488607043000" expanded="true" signature="8124:8172" placeholder="insert into toork.Staff... " />
+            <marker date="1488607043000" expanded="true" signature="8999:9067" placeholder="update toork... " />
+            <marker date="1488607043000" expanded="true" signature="9666:9741" placeholder="update toork... " />
+            <marker date="1488607043000" expanded="true" signature="10419:10466" placeholder="insert into toork.Staff... " />
+            <marker date="1488607043000" expanded="true" signature="10960:11018" placeholder="insert into toork.StaffSpace... " />
           </folding>
         </state>
       </provider>
@@ -1035,21 +1035,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SpaceBooking.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="42" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
-          <folding>
-            <element signature="e#1001#1002#0" expanded="true" />
-            <element signature="e#1051#1052#0" expanded="true" />
-            <element signature="e#1285#1286#0" expanded="true" />
-            <element signature="e#1321#1322#0" expanded="true" />
-            <element signature="e#1377#1378#0" expanded="true" />
-            <element signature="e#1427#1428#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1073,35 +1058,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestSQL.java">
+    <entry file="file://$PROJECT_DIR$/src/SpaceBooking.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.491453">
-          <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="42" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1001#1002#0" expanded="true" />
+            <element signature="e#1051#1052#0" expanded="true" />
+            <element signature="e#1285#1286#0" expanded="true" />
+            <element signature="e#1321#1322#0" expanded="true" />
+            <element signature="e#1377#1378#0" expanded="true" />
+            <element signature="e#1427#1428#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ParkingAppDB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5274074">
-          <caret line="152" column="9" selection-start-line="152" selection-start-column="9" selection-end-line="152" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.6888889">
+          <caret line="312" column="39" selection-start-line="312" selection-start-column="39" selection-end-line="312" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1488606843000" expanded="true" signature="1502:1605" placeholder="select staff... Staff" />
-            <marker date="1488606843000" expanded="true" signature="2678:2763" placeholder="select lotNa... ParkingLot" />
-            <marker date="1488606843000" expanded="true" signature="3754:3846" placeholder="select space... ParkingSpace" />
-            <marker date="1488606843000" expanded="true" signature="4899:4978" placeholder="select space... ParkingSpace" />
-            <marker date="1488606843000" expanded="true" signature="5590:5655" placeholder="select count... ParkingSpace" />
-            <marker date="1488606843000" expanded="true" signature="5590:5667" placeholder="select max(b... SpaceBooking" />
-            <marker date="1488606843000" expanded="true" signature="6177:6232" placeholder="insert into toork.ParkingSpace... " />
-            <marker date="1488606843000" expanded="true" signature="6954:7007" placeholder="insert into toork.ParkingLot... " />
-            <marker date="1488606843000" expanded="true" signature="8124:8172" placeholder="insert into toork.Staff... " />
-            <marker date="1488606843000" expanded="true" signature="8999:9067" placeholder="update toork... " />
-            <marker date="1488606843000" expanded="true" signature="9666:9741" placeholder="update toork... " />
-            <marker date="1488606843000" expanded="true" signature="10419:10466" placeholder="insert into toork.Staff... " />
-            <marker date="1488606843000" expanded="true" signature="10960:11018" placeholder="insert into toork.StaffSpace... " />
+            <marker date="1488607043000" expanded="true" signature="1502:1605" placeholder="select staff... Staff" />
+            <marker date="1488607043000" expanded="true" signature="2678:2763" placeholder="select lotNa... ParkingLot" />
+            <marker date="1488607043000" expanded="true" signature="3754:3846" placeholder="select space... ParkingSpace" />
+            <marker date="1488607043000" expanded="true" signature="4899:4978" placeholder="select space... ParkingSpace" />
+            <marker date="1488607043000" expanded="true" signature="5590:5655" placeholder="select count... ParkingSpace" />
+            <marker date="1488607043000" expanded="true" signature="5590:5667" placeholder="select max(b... SpaceBooking" />
+            <marker date="1488607043000" expanded="true" signature="6177:6232" placeholder="insert into toork.ParkingSpace... " />
+            <marker date="1488607043000" expanded="true" signature="6954:7007" placeholder="insert into toork.ParkingLot... " />
+            <marker date="1488607043000" expanded="true" signature="8124:8172" placeholder="insert into toork.Staff... " />
+            <marker date="1488607043000" expanded="true" signature="8999:9067" placeholder="update toork... " />
+            <marker date="1488607043000" expanded="true" signature="9666:9741" placeholder="update toork... " />
+            <marker date="1488607043000" expanded="true" signature="10419:10466" placeholder="insert into toork.Staff... " />
+            <marker date="1488607043000" expanded="true" signature="10960:11018" placeholder="insert into toork.StaffSpace... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/src.zip!/java/sql/Date.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8247863">
+          <caret line="142" column="0" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestSQL.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.53418803">
+          <caret line="25" column="68" selection-start-line="25" selection-start-column="68" selection-end-line="25" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
