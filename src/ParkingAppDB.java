@@ -103,7 +103,7 @@ public class ParkingAppDB {
             createConnection();
         }
         Statement stmt = null;
-        String query = "select spaceNumber, monthlyRate, lotName "
+        String query = "select spaceNumber, monthlyRate, lotName, taken "
                 + "from toork.ParkingSpace ";
 
         spaceList = new ArrayList<ParkingSpace>();
