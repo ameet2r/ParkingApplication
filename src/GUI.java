@@ -372,13 +372,13 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
     {
         pnlAssignParkingSpaceToVisitor = new JPanel();
         pnlAssignParkingSpaceToVisitor.setLayout(new GridLayout(2,3));
-        String labelNames[] = {"Enter parking space number: ", "Enter visitor license number: ",
-                "Enter date (YYYY-MM-DD): ", "Enter staff number: "};
+        String labelNames[] = {"space number: ", "license number: ",
+                "date(YYYY-MM-DD): ", "staff number: "};
         for(int i = 0; i < labelNames.length; i++)
         {
             JPanel panel = new JPanel();
             myTxfLabel[i] = new JLabel(labelNames[i]);
-            myTxfField[i] = new JTextField(25);
+            myTxfField[i] = new JTextField(15);
             panel.add(myTxfLabel[i]);
             panel.add(myTxfField[i]);
             pnlAssignParkingSpaceToVisitor.add(panel);
@@ -410,6 +410,26 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
         myParkingSpacesScrollPane = new JScrollPane(myParkingSpacesTable);
         panel.add(myParkingSpacesScrollPane);
         myParkingSpacesTable.getModel().addTableModelListener(this);
+        pnlAssignParkingSpaceToVisitor.add(panel);
+
+        //add list of staff
+        panel = new JPanel();
+        try {
+            myListOfStaffMembers = myParkingAppDB.getStaffMembers();
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        }
+        data = new Object[myListOfStaffMembers.size()][myStaffColumnNames.length];
+        for (int i=0; i<myListOfStaffMembers.size(); i++) {
+            data[i][0] = myListOfStaffMembers.get(i).getMyStaffNumber();
+            data[i][1] = myListOfStaffMembers.get(i).getMyName();
+            data[i][2] = myListOfStaffMembers.get(i).getMyTelephoneExtNumber();
+            data[i][3] = myListOfStaffMembers.get(i).getMyVehicleLicenseNumber();
+        }
+        myStaffTable = new JTable(data, myStaffColumnNames);
+        myStaffScrollPane = new JScrollPane(myStaffTable);
+        panel.add(myStaffScrollPane);
+        myStaffTable.getModel().addTableModelListener(this);
         pnlAssignParkingSpaceToVisitor.add(panel);
 
     }
@@ -489,11 +509,6 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
                 ParkingLot parkingLot = new ParkingLot(parkingLotName, parkingLotLocation,
                         parkingLotCapacity, parkingLotNumFloors);
 
-
-                //reset text fields
-                for (int i=0; i<myTxfField.length; i++) {
-                    myTxfField[i].setText("");
-                }
                 //check if parking lot is already in list of parking lots
                 myListOfParkingLots = myParkingAppDB.getParkingLots();
                 boolean canAddParkingLot = true;
@@ -510,7 +525,10 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
                 if(canAddParkingLot)
                 {
                     myParkingAppDB.addParkingLot(parkingLot);
+
+                    myParkingAppDB.addParkingSpace(parkingLotCapacity, parkingLotName, myParkingAppDB.getMaxParkingSpaceNumber());
                 }
+
 
 
                 JOptionPane.showMessageDialog(null, "Success");
@@ -527,12 +545,11 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
                 parkingLotName = myTxfField[0].getText();
                 numberOfParkingSpaces = Integer.parseInt(myTxfField[1].getText());
 
-                //reset text fields
-                for (int i=0; i<myTxfField.length; i++) {
-                    myTxfField[i].setText("");
-                }
 
-                //send to db
+                //Update capacity of parking lot
+                
+
+                //add parking space to lot
                 myParkingAppDB.addParkingSpace(numberOfParkingSpaces, parkingLotName,
                         myParkingAppDB.getMaxParkingSpaceNumber());
 
@@ -678,9 +695,11 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
 
 
                 //TODO send to db
-//                SpaceBooking spaceBooking = new SpaceBooking()
+                SpaceBooking spaceBooking = new SpaceBooking(myParkingAppDB.getMaxBookingNumber() + 1,
+                        parkingSpaceNumber, staffNum, visitorLicenseNum, java.sql.Date.valueOf(date));
 
-
+                myParkingAppDB.addBooking(spaceBooking);
+                myParkingAppDB.updateParkingSpace(parkingSpaceNumber, "taken", true);
 
                 JOptionPane.showMessageDialog(null, "Success");
             }catch (Throwable t) {
@@ -706,8 +725,6 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
         TableModel model = (TableModel)e.getSource();
         String columnName = model.getColumnName(column);
         Object data = model.getValueAt(row, column);
-
-
 
     }
 
