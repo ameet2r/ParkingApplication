@@ -11,12 +11,12 @@ public class StaffMember {
     private String myVehicleLicenseNumber;
     private List<SpaceBooking> myParkingSpaces;
 
-    public StaffMember(int myStaffNumber, String myName,
-                       String myTelephoneExtNumber, String myVehicleLicenseNumber) {
-        this.myStaffNumber = myStaffNumber;
-        this.myName = myName;
-        this.myTelephoneExtNumber = myTelephoneExtNumber;
-        this.myVehicleLicenseNumber = myVehicleLicenseNumber;
+    public StaffMember(int theStaffNumber, String theName,
+                       String theTelephoneExtNumber, String theVehicleLicenseNumber) {
+        this.myStaffNumber = theStaffNumber;
+        this.myName = theName;
+        this.myTelephoneExtNumber = theTelephoneExtNumber;
+        this.myVehicleLicenseNumber = theVehicleLicenseNumber;
     }
 
     public int getMyStaffNumber() {

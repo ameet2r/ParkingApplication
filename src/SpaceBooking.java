@@ -10,13 +10,13 @@ public class SpaceBooking {
     private String myLicenseNumber;
     private Date myDateOfVisit;
 
-    public SpaceBooking(int myBookingId, int myParkingSpaceNumber, int myStaffNumber,
-                        String myLicenseNumber, Date myDateOfVisit) {
-        this.myBookingId = myBookingId;
-        this.myParkingSpaceNumber = myParkingSpaceNumber;
-        this.myStaffNumber = myStaffNumber;
-        this.myLicenseNumber = myLicenseNumber;
-        this.myDateOfVisit = myDateOfVisit;
+    public SpaceBooking(int theBookingId, int theParkingSpaceNumber, int theStaffNumber,
+                        String theLicenseNumber, Date theDateOfVisit) {
+        this.myBookingId = theBookingId;
+        this.myParkingSpaceNumber = theParkingSpaceNumber;
+        this.myStaffNumber = theStaffNumber;
+        this.myLicenseNumber = theLicenseNumber;
+        this.myDateOfVisit = theDateOfVisit;
     }
 
     public int getMyParkingSpaceNumber() {

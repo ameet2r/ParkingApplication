@@ -285,7 +285,7 @@ public class ParkingAppDB {
 
     public void updateParkingLot(String theLotName, String theColumnName, int theData) {
 
-        String sql = "update toork.ParkingSpace set " + theColumnName + " = ?  where lotName = ? ";
+        String sql = "update toork.ParkingLot set " + theColumnName + " = ?  where lotName = ? ";
         System.out.println(sql);
         PreparedStatement preparedStatement = null;
         try {
