@@ -36,7 +36,7 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
     private JButton btnAddParkingLotView, btnAddParkingSpaceView, btnAddStaffMemberView, btnEditStaffMemberView, btnAssignParkingSpaceView, btnAssignParkingSpaceToVisitorView;
     private JButton btnAddParkingLot, btnAddParkingSpace, btnAddStaffMember, btnEditStaffMember, btnAssignParkingSpace, btnAssignParkingSpaceToVisitor;
     private JPanel pnlButtons, pnlContent;
-    private MovieDB db;
+   // private MovieDB db;
     private List<Movie> list;
     private String[] columnNames = {"Title",
             "Year",
@@ -44,7 +44,7 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
             "Genre",
             "StudioName"};
 
-    private String[] myParkingLotColumnNames = {};
+    private String[] myParkingLotColumnNames = {"lotName", "location", "capacity", "floors"};
     private String[] myParkingSpaceColumnNames = {};
     private String[] myStaffColumnNames = {};
 
@@ -76,6 +76,12 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
     private JScrollPane myParkingSpacesScrollPane;
     private JScrollPane myParkingLotsScrollPane;
 
+    private ParkingAppDB myParkingAppDB;
+
+    private List<ParkingLot> myListOfParkingLots;
+
+
+
 
 
 
@@ -86,24 +92,21 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
         super("Parking Application");
 
         //TODO replace with other parking db
-        db = new MovieDB();
+        myParkingAppDB = new ParkingAppDB();
         try
         {
-            list = db.getMovies();
-
-            data = new Object[list.size()][columnNames.length];
-            for (int i=0; i<list.size(); i++) {
-                data[i][0] = list.get(i).getTitle();
-                data[i][1] = list.get(i).getYear();
-                data[i][2] = list.get(i).getLength();
-                data[i][3] = list.get(i).getGenre();
-                data[i][4] = list.get(i).getStudioName();
-
-            }
+            myListOfParkingLots = myParkingAppDB.getParkingLots();
 
         } catch (SQLException e)
         {
             e.printStackTrace();
+        }
+        data = new Object[myListOfParkingLots.size()][myParkingLotColumnNames.length];
+        for (int i=0; i<myListOfParkingLots.size(); i++) {
+            data[i][0] = myListOfParkingLots.get(i).getMyLotName();
+            data[i][1] = myListOfParkingLots.get(i).getMyLocation();
+            data[i][2] = myListOfParkingLots.get(i).getMyCapacity();
+            data[i][3] = myListOfParkingLots.get(i).getMyNumberOfFloors();
         }
         createComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -212,18 +215,17 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
         //show parking lots scroll pane
         //TODO remove and add real data
         try {
-            list = db.getMovies();
+            myListOfParkingLots = myParkingAppDB.getParkingLots();
         } catch (SQLException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
         }
-        data = new Object[list.size()][columnNames.length];
-        for (int i=0; i<list.size(); i++) {
-            data[i][0] = list.get(i).getTitle();
-            data[i][1] = list.get(i).getYear();
-            data[i][2] = list.get(i).getLength();
-            data[i][3] = list.get(i).getGenre();
-            data[i][4] = list.get(i).getStudioName();
+        data = new Object[myListOfParkingLots.size()][myParkingLotColumnNames.length];
+        for (int i=0; i<myListOfParkingLots.size(); i++) {
+            data[i][0] = myListOfParkingLots.get(i).getMyLotName();
+            data[i][1] = myListOfParkingLots.get(i).getMyLocation();
+            data[i][2] = myListOfParkingLots.get(i).getMyCapacity();
+            data[i][3] = myListOfParkingLots.get(i).getMyNumberOfFloors();
         }
         myParkingLotsTable = new JTable(data, columnNames); //modify by adding data and columnNames
         myParkingLotsScrollPane = new JScrollPane(myParkingLotsTable);
@@ -280,18 +282,17 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
         panel = new JPanel();
         //TODO remove and add real data
         try {
-            list = db.getMovies();
+            myListOfParkingLots = myParkingAppDB.getParkingLots();
         } catch (SQLException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
         }
-        data = new Object[list.size()][columnNames.length];
-        for (int i=0; i<list.size(); i++) {
-            data[i][0] = list.get(i).getTitle();
-            data[i][1] = list.get(i).getYear();
-            data[i][2] = list.get(i).getLength();
-            data[i][3] = list.get(i).getGenre();
-            data[i][4] = list.get(i).getStudioName();
+        data = new Object[myListOfParkingLots.size()][myParkingLotColumnNames.length];
+        for (int i=0; i<myListOfParkingLots.size(); i++) {
+            data[i][0] = myListOfParkingLots.get(i).getMyLotName();
+            data[i][1] = myListOfParkingLots.get(i).getMyLocation();
+            data[i][2] = myListOfParkingLots.get(i).getMyCapacity();
+            data[i][3] = myListOfParkingLots.get(i).getMyNumberOfFloors();
         }
         myStaffTable = new JTable(data, columnNames); //modify by adding data and columnNames
         myStaffScrollPane = new JScrollPane(myStaffTable);
@@ -324,18 +325,17 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
         panel = new JPanel();
         //TODO remove and add real data
         try {
-            list = db.getMovies();
+            myListOfParkingLots = myParkingAppDB.getParkingLots();
         } catch (SQLException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
         }
-        data = new Object[list.size()][columnNames.length];
-        for (int i=0; i<list.size(); i++) {
-            data[i][0] = list.get(i).getTitle();
-            data[i][1] = list.get(i).getYear();
-            data[i][2] = list.get(i).getLength();
-            data[i][3] = list.get(i).getGenre();
-            data[i][4] = list.get(i).getStudioName();
+        data = new Object[myListOfParkingLots.size()][myParkingLotColumnNames.length];
+        for (int i=0; i<myListOfParkingLots.size(); i++) {
+            data[i][0] = myListOfParkingLots.get(i).getMyLotName();
+            data[i][1] = myListOfParkingLots.get(i).getMyLocation();
+            data[i][2] = myListOfParkingLots.get(i).getMyCapacity();
+            data[i][3] = myListOfParkingLots.get(i).getMyNumberOfFloors();
         }
         myStaffTable = new JTable(data, columnNames);
         myStaffScrollPane = new JScrollPane(myStaffTable);
@@ -348,18 +348,17 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
         panel = new JPanel();
         //TODO remove and add real data
         try {
-            list = db.getMovies();
+            myListOfParkingLots = myParkingAppDB.getParkingLots();
         } catch (SQLException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
         }
-        data = new Object[list.size()][columnNames.length];
-        for (int i=0; i<list.size(); i++) {
-            data[i][0] = list.get(i).getTitle();
-            data[i][1] = list.get(i).getYear();
-            data[i][2] = list.get(i).getLength();
-            data[i][3] = list.get(i).getGenre();
-            data[i][4] = list.get(i).getStudioName();
+        data = new Object[myListOfParkingLots.size()][myParkingLotColumnNames.length];
+        for (int i=0; i<myListOfParkingLots.size(); i++) {
+            data[i][0] = myListOfParkingLots.get(i).getMyLotName();
+            data[i][1] = myListOfParkingLots.get(i).getMyLocation();
+            data[i][2] = myListOfParkingLots.get(i).getMyCapacity();
+            data[i][3] = myListOfParkingLots.get(i).getMyNumberOfFloors();
         }
         myParkingSpacesTable = new JTable(data, columnNames); //modify by adding data and columnNames
         myParkingSpacesScrollPane = new JScrollPane(myParkingSpacesTable);
@@ -393,18 +392,17 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
         panel = new JPanel();
         //TODO remove and add real data
         try {
-            list = db.getMovies();
+            myListOfParkingLots = myParkingAppDB.getParkingLots();
         } catch (SQLException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
         }
-        data = new Object[list.size()][columnNames.length];
-        for (int i=0; i<list.size(); i++) {
-            data[i][0] = list.get(i).getTitle();
-            data[i][1] = list.get(i).getYear();
-            data[i][2] = list.get(i).getLength();
-            data[i][3] = list.get(i).getGenre();
-            data[i][4] = list.get(i).getStudioName();
+        data = new Object[myListOfParkingLots.size()][myParkingLotColumnNames.length];
+        for (int i=0; i<myListOfParkingLots.size(); i++) {
+            data[i][0] = myListOfParkingLots.get(i).getMyLotName();
+            data[i][1] = myListOfParkingLots.get(i).getMyLocation();
+            data[i][2] = myListOfParkingLots.get(i).getMyCapacity();
+            data[i][3] = myListOfParkingLots.get(i).getMyNumberOfFloors();
         }
         myParkingSpacesTable = new JTable(data, columnNames);
         myParkingSpacesScrollPane = new JScrollPane(myParkingSpacesTable);
@@ -495,9 +493,23 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
                     myTxfField[i].setText("");
                 }
                 //check if parking lot is already in list of parking lots
-//                ArrayList<P>
+                myListOfParkingLots = myParkingAppDB.getParkingLots();
+                boolean canAddParkingLot = true;
+                for(ParkingLot parkingLot1 : myListOfParkingLots)
+                {
+                    if(parkingLot.getMyLotName() == parkingLot1.getMyLotName())
+                    {
+                        canAddParkingLot = false;
+                    }
+                }
+
 
                 //TODO send to db
+
+                if(canAddParkingLot)
+                {
+                    myParkingAppDB.addParkingLot(parkingLot);
+                }
 
 
                 JOptionPane.showMessageDialog(null, "Success");
@@ -635,7 +647,7 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
         String columnName = model.getColumnName(column);
         Object data = model.getValueAt(row, column);
 
-        db.updateMovie(row, columnName, data);
+//        db.updateMovie(row, columnName, data);
 
     }
 
