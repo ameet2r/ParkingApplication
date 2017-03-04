@@ -7,9 +7,11 @@ public class TestSQL {
     public static void main(String[] args) {
         ParkingAppDB parkingAppDB = new ParkingAppDB();
         try {
-            System.out.println(parkingAppDB.getMaxParkingSpaceNumber());
+            parkingAppDB.createConnection();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+//        parkingAppDB.addStaffMember(new StaffMember(1234, "tester", "123122312", "asdfasdf"));
+//        parkingAppDB.updateStaff();
     }
 }

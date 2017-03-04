@@ -114,8 +114,9 @@ public class ParkingAppDB {
                 int spaceNumber = rs.getInt("spaceNumber");
                 BigDecimal monthlyRate = rs.getBigDecimal("monthlyRate");
                 String lotName = rs.getString("lotName");
+                boolean taken = rs.getBoolean("taken");
                 ParkingSpace parkingSpace = new ParkingSpace(spaceNumber, monthlyRate,
-                        lotName);
+                        lotName, taken);
                 spaceList.add(parkingSpace);
             }
         } catch (SQLException e) {
@@ -154,7 +155,7 @@ public class ParkingAppDB {
     }
 
     public void addParkingSpace(int theSpaces, String theLotName, int maxSpace) {
-        String sql = "insert into toork.ParkingSpace values " + "(?, ?, ?); ";
+        String sql = "insert into toork.ParkingSpace values " + "(?, ?, ?, ?); ";
 
         for(int i = maxSpace + 1; i <= theSpaces + maxSpace; i++) {
             PreparedStatement preparedStatement = null;
@@ -163,6 +164,7 @@ public class ParkingAppDB {
                 preparedStatement.setInt(1, i);
                 preparedStatement.setBigDecimal(2, BigDecimal.ZERO);
                 preparedStatement.setString(3, theLotName);
+                preparedStatement.setBoolean(4, false);
                 preparedStatement.executeUpdate();
             } catch (SQLException e) {
                 System.out.println(e);

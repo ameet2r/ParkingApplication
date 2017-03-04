@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e5da0f89-f465-44b8-b3ce-be353990b448" name="Default" comment="" />
+    <list default="true" id="e5da0f89-f465-44b8-b3ce-be353990b448" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ParkingApplication/ParkingAppDB.class" afterPath="$PROJECT_DIR$/out/production/ParkingApplication/ParkingAppDB.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ParkingApplication/ParkingSpace.class" afterPath="$PROJECT_DIR$/out/production/ParkingApplication/ParkingSpace.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ParkingApplication/TestSQL.class" afterPath="$PROJECT_DIR$/out/production/ParkingApplication/TestSQL.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ParkingAppDB.java" afterPath="$PROJECT_DIR$/src/ParkingAppDB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ParkingSpace.java" afterPath="$PROJECT_DIR$/src/ParkingSpace.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TestSQL.java" afterPath="$PROJECT_DIR$/src/TestSQL.java" />
+    </list>
     <ignored path="ParkingApplication.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -25,11 +34,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="GUI.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="GUI.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/GUI.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="413">
-                  <caret line="259" column="4" selection-start-line="259" selection-start-column="4" selection-end-line="259" selection-end-column="4" />
+                <state relative-caret-position="323">
+                  <caret line="253" column="50" selection-start-line="253" selection-start-column="50" selection-end-line="253" selection-end-column="50" />
                   <folding>
                     <element signature="docComment;method#GUI#0;class#GUI#0" expanded="false" />
                     <element signature="docComment;method#createComponents#0;class#GUI#0" expanded="false" />
@@ -48,19 +57,12 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
+          <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="0">
                   <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding>
-                    <marker date="1488601971000" expanded="true" signature="59:55229" ph="..." />
-                    <marker date="1488601971000" expanded="true" signature="98:192" ph="..." />
-                    <marker date="1488601971000" expanded="true" signature="55155:55172" ph="..." />
-                    <marker date="1488601971000" expanded="true" signature="55155:55190" ph="..." />
-                    <marker date="1488601971000" expanded="true" signature="55155:55203" ph="..." />
-                    <marker date="1488601971000" expanded="true" signature="55155:55218" ph="..." />
-                  </folding>
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -73,18 +75,16 @@
             <entry file="file://$PROJECT_DIR$/src/ParkingAppDB.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="2367">
-                  <caret line="179" column="73" selection-start-line="179" selection-start-column="73" selection-end-line="179" selection-end-column="73" />
+                  <caret line="181" column="73" selection-start-line="181" selection-start-column="73" selection-end-line="181" selection-end-column="73" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <marker date="1488600876000" expanded="true" signature="1502:1605" ph="select staff... Staff" />
-                    <marker date="1488600876000" expanded="true" signature="2678:2763" ph="select lotNa... ParkingLot" />
-                    <marker date="1488600876000" expanded="true" signature="3754:3839" ph="select space... ParkingSpace" />
-                    <marker date="1488600876000" expanded="true" signature="4829:4910" ph="select count... ParkingSpace" />
-                    <marker date="1488600876000" expanded="true" signature="5420:5472" ph="insert into toork.ParkingSpace... " />
-                    <marker date="1488600876000" expanded="true" signature="6138:6191" ph="insert into toork.ParkingLot... " />
-                    <marker date="1488600876000" expanded="true" signature="7308:7356" ph="insert into toork.Staff... " />
-                    <marker date="1488600876000" expanded="true" signature="7355:7356" ph="insert into toork.Staff... " />
-                    <marker date="1488600876000" expanded="true" signature="8183:8251" ph="update toork... " />
+                    <marker date="1488602136000" expanded="true" signature="1502:1605" ph="select staff... Staff" />
+                    <marker date="1488602136000" expanded="true" signature="2678:2763" ph="select lotNa... ParkingLot" />
+                    <marker date="1488602136000" expanded="true" signature="3754:3839" ph="select space... ParkingSpace" />
+                    <marker date="1488602136000" expanded="true" signature="6260:6313" ph="insert into toork.ParkingLot... " />
+                    <marker date="1488602136000" expanded="true" signature="7430:7478" ph="insert into toork.Staff... " />
+                    <marker date="1488602136000" expanded="true" signature="7477:7478" ph="insert into toork.Staff... " />
+                    <marker date="1488602136000" expanded="true" signature="8305:8373" ph="update toork... " />
                   </folding>
                 </state>
               </provider>
@@ -129,9 +129,9 @@
         <option value="$PROJECT_DIR$/src/ParkingLot.java" />
         <option value="$PROJECT_DIR$/src/ParkingAppDB.java" />
         <option value="$PROJECT_DIR$/src/TestSQL.java" />
-        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/src/StaffMember.java" />
         <option value="$PROJECT_DIR$/src/GUI.java" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
       </list>
     </option>
   </component>
@@ -642,12 +642,12 @@
       <updated>1488556912307</updated>
       <workItem from="1488556915189" duration="20130000" />
       <workItem from="1488594030499" duration="3542000" />
-      <workItem from="1488598241280" duration="3849000" />
+      <workItem from="1488598241280" duration="3896000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27521000" />
+    <option name="totallyTimeSpent" value="27568000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1023" extended-state="6" />
@@ -700,15 +700,13 @@
           <caret line="122" column="60" selection-start-line="122" selection-start-column="60" selection-end-line="122" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1488600876000" expanded="true" signature="1502:1605" ph="select staff... Staff" />
-            <marker date="1488600876000" expanded="true" signature="2678:2763" ph="select lotNa... ParkingLot" />
-            <marker date="1488600876000" expanded="true" signature="3754:3839" ph="select space... ParkingSpace" />
-            <marker date="1488600876000" expanded="true" signature="4829:4910" ph="select count... ParkingSpace" />
-            <marker date="1488600876000" expanded="true" signature="5420:5472" ph="insert into toork.ParkingSpace... " />
-            <marker date="1488600876000" expanded="true" signature="6138:6191" ph="insert into toork.ParkingLot... " />
-            <marker date="1488600876000" expanded="true" signature="7308:7356" ph="insert into toork.Staff... " />
-            <marker date="1488600876000" expanded="true" signature="7355:7356" ph="insert into toork.Staff... " />
-            <marker date="1488600876000" expanded="true" signature="8183:8251" ph="update toork... " />
+            <marker date="1488602136000" expanded="true" signature="1502:1605" ph="select staff... Staff" />
+            <marker date="1488602136000" expanded="true" signature="2678:2763" ph="select lotNa... ParkingLot" />
+            <marker date="1488602136000" expanded="true" signature="3754:3839" ph="select space... ParkingSpace" />
+            <marker date="1488602136000" expanded="true" signature="6260:6313" ph="insert into toork.ParkingLot... " />
+            <marker date="1488602136000" expanded="true" signature="7430:7478" ph="insert into toork.Staff... " />
+            <marker date="1488602136000" expanded="true" signature="7477:7478" ph="insert into toork.Staff... " />
+            <marker date="1488602136000" expanded="true" signature="8305:8373" ph="update toork... " />
           </folding>
         </state>
       </provider>
@@ -928,33 +926,16 @@
     <entry file="file://$PROJECT_DIR$/src/ParkingAppDB.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2367">
-          <caret line="179" column="73" selection-start-line="179" selection-start-column="73" selection-end-line="179" selection-end-column="73" />
+          <caret line="181" column="73" selection-start-line="181" selection-start-column="73" selection-end-line="181" selection-end-column="73" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1488600876000" expanded="true" signature="1502:1605" ph="select staff... Staff" />
-            <marker date="1488600876000" expanded="true" signature="2678:2763" ph="select lotNa... ParkingLot" />
-            <marker date="1488600876000" expanded="true" signature="3754:3839" ph="select space... ParkingSpace" />
-            <marker date="1488600876000" expanded="true" signature="4829:4910" ph="select count... ParkingSpace" />
-            <marker date="1488600876000" expanded="true" signature="5420:5472" ph="insert into toork.ParkingSpace... " />
-            <marker date="1488600876000" expanded="true" signature="6138:6191" ph="insert into toork.ParkingLot... " />
-            <marker date="1488600876000" expanded="true" signature="7308:7356" ph="insert into toork.Staff... " />
-            <marker date="1488600876000" expanded="true" signature="7355:7356" ph="insert into toork.Staff... " />
-            <marker date="1488600876000" expanded="true" signature="8183:8251" ph="update toork... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1488601971000" expanded="true" signature="59:55229" ph="..." />
-            <marker date="1488601971000" expanded="true" signature="98:192" ph="..." />
-            <marker date="1488601971000" expanded="true" signature="55155:55172" ph="..." />
-            <marker date="1488601971000" expanded="true" signature="55155:55190" ph="..." />
-            <marker date="1488601971000" expanded="true" signature="55155:55203" ph="..." />
-            <marker date="1488601971000" expanded="true" signature="55155:55218" ph="..." />
+            <marker date="1488602136000" expanded="true" signature="1502:1605" ph="select staff... Staff" />
+            <marker date="1488602136000" expanded="true" signature="2678:2763" ph="select lotNa... ParkingLot" />
+            <marker date="1488602136000" expanded="true" signature="3754:3839" ph="select space... ParkingSpace" />
+            <marker date="1488602136000" expanded="true" signature="6260:6313" ph="insert into toork.ParkingLot... " />
+            <marker date="1488602136000" expanded="true" signature="7430:7478" ph="insert into toork.Staff... " />
+            <marker date="1488602136000" expanded="true" signature="7477:7478" ph="insert into toork.Staff... " />
+            <marker date="1488602136000" expanded="true" signature="8305:8373" ph="update toork... " />
           </folding>
         </state>
       </provider>
@@ -969,8 +950,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="259" column="4" selection-start-line="259" selection-start-column="4" selection-end-line="259" selection-end-column="4" />
+        <state relative-caret-position="323">
+          <caret line="253" column="50" selection-start-line="253" selection-start-column="50" selection-end-line="253" selection-end-column="50" />
           <folding>
             <element signature="docComment;method#GUI#0;class#GUI#0" expanded="false" />
             <element signature="docComment;method#createComponents#0;class#GUI#0" expanded="false" />
@@ -985,6 +966,14 @@
             <element signature="docComment;method#actionPerformed#0;class#GUI#0" expanded="false" />
             <element signature="docComment;method#tableChanged#0;class#GUI#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
