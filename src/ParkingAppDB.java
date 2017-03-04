@@ -177,7 +177,7 @@ public class ParkingAppDB {
     }
 
     public void addParkingLot(ParkingLot theParkingLot) {
-        String sql = "insert into toork.ParkingLot values " + "(?, ?, ?, ?, null); ";
+        String sql = "insert into toork.ParkingLot values " + "(?, ?, ?, ?); ";
 
         PreparedStatement preparedStatement = null;
         try {
