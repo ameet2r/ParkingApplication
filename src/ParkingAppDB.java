@@ -97,6 +97,23 @@ public class ParkingAppDB {
         return lotList;
     }
 
+    public void addParkingLot(ParkingLot theParkingLot) {
+        String sql = "insert into toork.Movies values " + "(?, ?, ?, ?, null); ";
+
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1, theParkingLot.getMyLotName());
+            preparedStatement.setString(2, theParkingLot.getMyLocation());
+            preparedStatement.setInt(3, theParkingLot.getMyCapacity());
+            preparedStatement.setInt(4, theParkingLot.getMyNumberOfFloors());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+            e.printStackTrace();
+        }
+    }
+
     public StaffMember getStaff(int staffNumber) {
         StaffMember toReturn = null;
         try {
