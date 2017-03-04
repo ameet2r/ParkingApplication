@@ -10,6 +10,7 @@ import javax.swing.*;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
+import java.math.BigDecimal;
 import java.util.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -238,8 +239,7 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
     {
         pnlAddStaffMember = new JPanel();
         pnlAddStaffMember.setLayout( new GridLayout(6,2));
-        String labelNames[] = {"Enter Name: ", "Enter license number: ", "Enter Telephone Extension Number: ",
-                "Enter Number: ", "Enter Staff Number: "};
+        String labelNames[] = {"Enter Name: ", "Enter license number: ", "Enter Telephone Extension Number: ", "Enter Staff Number: "};
         for(int i = 0; i < labelNames.length; i++)
         {
             JPanel panel = new JPanel();
@@ -305,7 +305,7 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
     {
         pnlAssignParkingSpace = new JPanel();
         pnlAssignParkingSpace.setLayout(new GridLayout(2,3));
-        String labelNames[] = {"Enter staff number: ", "Enter parking space number: "};
+        String labelNames[] = {"Enter staff number: ", "Enter parking space number: ", "Enter monthly rate: "};
         for(int i = 0; i < labelNames.length; i++)
         {
             JPanel panel = new JPanel();
@@ -552,23 +552,24 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
         {
             String staffName = "";
             String licenseNumber = "";
-            int telephoneExtNum = 0;
-            int number = 0;
+            String telephoneExtNum = "";
             int staffNumber = 0;
 
             try{
                 staffName = myTxfField[0].getText();
                 licenseNumber = myTxfField[1].getText();
-                telephoneExtNum = Integer.parseInt(myTxfField[2].getText());
-                number = Integer.parseInt(myTxfField[3].getText());
-                staffNumber = Integer.parseInt(myTxfField[4].getText());
+                telephoneExtNum = myTxfField[2].getText();
+                staffNumber = Integer.parseInt(myTxfField[3].getText());
 
+                StaffMember staffMember = new StaffMember(staffNumber, staffName, telephoneExtNum, licenseNumber);
                 //reset text fields
-                for (int i=0; i<myTxfField.length; i++) {
-                    myTxfField[i].setText("");
-                }
+//                for (int i=0; i < myTxfField.length; i++) {
+//                    myTxfField[i].setText("");
+//                }
 
-                //TODO send to db
+
+                //send to db
+                myParkingAppDB.addStaffMember(staffMember);
 
 
                 JOptionPane.showMessageDialog(null, "Success");
@@ -579,39 +580,70 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
         else if(e.getSource() == btnEditStaffMember)
         {
             int staffNumber = 0;
-            int newTelephoneExtNum = 0;
+            String newTelephoneExtNum = "";
             String newLicenseNum = "";
             try{
                 staffNumber = Integer.parseInt(myTxfField[0].getText());
-                newTelephoneExtNum = Integer.parseInt(myTxfField[1].getText());
+                newTelephoneExtNum = myTxfField[1].getText();
                 newLicenseNum = myTxfField[2].getText();
 
-                //reset text fields
-                for (int i=0; i<myTxfField.length; i++) {
-                    myTxfField[i].setText("");
+//                for (int i=0; i<myTxfField.length; i++) {
+//                    myTxfField[i].setText("");
+//                }
+
+                //compare staff number against list of staff members, find index
+                int indexToUpdate = -1;
+                myListOfStaffMembers = myParkingAppDB.getStaffMembers();
+                for(int i = 0; i < myListOfStaffMembers.size(); i++)
+                {
+                    if(myListOfStaffMembers.get(i).getMyStaffNumber() == staffNumber)
+                    {
+                        indexToUpdate = i;
+                        break;
+                    }
                 }
 
-                //TODO send to db
+                //then call updateStaff(index, "vehicleLicenseNumber", newTelephneExtNum);
+                //and updateStaff(index, "telephoneExt", newLicenseNum);
 
+                if(indexToUpdate != -1)
+                {
+                    if(!newTelephoneExtNum.equals(""))
+                    {
+                        myParkingAppDB.updateStaff(indexToUpdate, "telephoneExt", newTelephoneExtNum);
+                        //System.out.println("update telephone");
+                    }
+
+                    if(!newLicenseNum.equals(""))
+                    {
+                        myParkingAppDB.updateStaff(indexToUpdate, "vehicleLicenseNumber", newLicenseNum);
+                        //System.out.println("update license num");
+                    }
+                }
 
                 JOptionPane.showMessageDialog(null, "Success");
             }catch (Throwable t) {
                 JOptionPane.showMessageDialog(null, "There was a problem");
             }
 
+
+            pnlContent.removeAll();
+            editStaffMemberPanel();
+            pnlContent.add(pnlEditStaffMember);
+            pnlContent.revalidate();
+            this.repaint();
         }
         else if(e.getSource() == btnAssignParkingSpace)
         {
             int staffNumber = 0;
             int parkingSpaceNumber = 0;
+            BigDecimal monthlyRate = BigDecimal.ZERO;
             try{
                 staffNumber = Integer.parseInt(myTxfField[0].getText());
                 parkingSpaceNumber = Integer.parseInt(myTxfField[1].getText());
+                monthlyRate = BigDecimal.valueOf(Double.parseDouble(myTxfField[2].getText()));
 
-                //reset text fields
-                for (int i=0; i<myTxfField.length; i++) {
-                    myTxfField[i].setText("");
-                }
+
 
                 //TODO send to db
 
@@ -620,6 +652,11 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
             }catch (Throwable t) {
                 JOptionPane.showMessageDialog(null, "There was a problem");
             }
+            pnlContent.removeAll();
+            assignParkingSpacePanel();
+            pnlContent.add(pnlAssignParkingSpace);
+            pnlContent.revalidate();
+            this.repaint();
         }
         else if (e.getSource() == btnAssignParkingSpaceToVisitor)
         {
@@ -629,10 +666,7 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
                 parkingSpaceNumber = Integer.parseInt(myTxfField[0].getText());
                 visitorLicenseNum = myTxfField[1].getText();
 
-                //reset text fields
-                for (int i=0; i<myTxfField.length; i++) {
-                    myTxfField[i].setText("");
-                }
+
 
                 //TODO send to db
 
