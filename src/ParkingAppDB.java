@@ -9,6 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+/**
+ * Manages the database calls for the ParkingApplication.
+ *
+ * @author Meneka Abraham modified by Karanbir Toor
+ * @version 1.0
+ */
 public class ParkingAppDB {
     private static String myUserName = "toork"; //Change to yours
     private static String myPassword = "Ammed9";
@@ -21,6 +27,7 @@ public class ParkingAppDB {
     /**
      * Creates a sql connection to MySQL using the properties for
      * userid, password and server information.
+     *
      * @throws SQLException
      */
     public static void createConnection() throws SQLException {
@@ -180,7 +187,7 @@ public class ParkingAppDB {
     public void addParkingSpace(int theSpaces, String theLotName, int theMaxSpace) {
         String sql = "insert into toork.ParkingSpace values " + "(?, ?, ?, ?); ";
 
-        for(int i = theMaxSpace + 1; i <= theSpaces + theMaxSpace; i++) {
+        for (int i = theMaxSpace + 1; i <= theSpaces + theMaxSpace; i++) {
             PreparedStatement preparedStatement = null;
             try {
                 preparedStatement = myConn.prepareStatement(sql);

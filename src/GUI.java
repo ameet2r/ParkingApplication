@@ -432,7 +432,7 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
                 myData[i][0] = myListOfParkingSpaces.get(i).getMyParkingSpaceNumber();
                 myData[i][1] = myListOfParkingSpaces.get(i).getMyMonthlyRate();
                 myData[i][2] = myListOfParkingSpaces.get(i).getMyLotName();
-                myData[i][3] = myListOfParkingSpaces.get(i).isMyTaken();
+                myData[i][3] = myListOfParkingSpaces.get(i).getMyTaken();
         }
         myParkingSpacesTable = new JTable(myData, myParkingSpaceColumnNames);
         myParkingSpacesScrollPane = new JScrollPane(myParkingSpacesTable);
@@ -477,11 +477,11 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
         }
         myData = new Object[myListOfParkingSpaces.size()][myParkingSpaceColumnNames.length];
         for (int i=0; i<myListOfParkingSpaces.size(); i++) {
-            if(!myListOfParkingSpaces.get(i).isMyTaken()) {
+            if(!myListOfParkingSpaces.get(i).getMyTaken()) {
                 myData[i][0] = myListOfParkingSpaces.get(i).getMyParkingSpaceNumber();
                 myData[i][1] = myListOfParkingSpaces.get(i).getMyMonthlyRate();
                 myData[i][2] = myListOfParkingSpaces.get(i).getMyLotName();
-                myData[i][3] = myListOfParkingSpaces.get(i).isMyTaken();
+                myData[i][3] = myListOfParkingSpaces.get(i).getMyTaken();
             }
         }
         myParkingSpacesTable = new JTable(myData, myParkingSpaceColumnNames);
