@@ -20,6 +20,7 @@ public class TestSQL {
         }
 //        parkingAppDB.updateStaff(0, "vehicleLicenseNumber", "12311111111");
 //        parkingAppDB.addStaffSpace(123, 4);
-        parkingAppDB.updateParkingSpace(4, "taken", true);
+//        parkingAppDB.updateParkingSpace(4, "taken", true);
+//        parkingAppDB.addBooking();
     }
 }

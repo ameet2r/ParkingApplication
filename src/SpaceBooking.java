@@ -1,3 +1,5 @@
+import java.sql.Date;
+
 /**
  * Created by Ameet2r on 3/3/17.
  */
@@ -6,7 +8,16 @@ public class SpaceBooking {
     private int myParkingSpaceNumber;
     private int myStaffNumber;
     private String myLicenseNumber;
-    private String myDateOfVisit;
+    private Date myDateOfVisit;
+
+    public SpaceBooking(int myBookingId, int myParkingSpaceNumber, int myStaffNumber,
+                        String myLicenseNumber, Date myDateOfVisit) {
+        this.myBookingId = myBookingId;
+        this.myParkingSpaceNumber = myParkingSpaceNumber;
+        this.myStaffNumber = myStaffNumber;
+        this.myLicenseNumber = myLicenseNumber;
+        this.myDateOfVisit = myDateOfVisit;
+    }
 
     public int getMyParkingSpaceNumber() {
         return myParkingSpaceNumber;
@@ -32,11 +43,11 @@ public class SpaceBooking {
         this.myLicenseNumber = myLicenseNumber;
     }
 
-    public String getMyDateOfVisit() {
+    public Date getMyDateOfVisit() {
         return myDateOfVisit;
     }
 
-    public void setMyDateOfVisit(String myDateOfVisit) {
+    public void setMyDateOfVisit(Date myDateOfVisit) {
         this.myDateOfVisit = myDateOfVisit;
     }
 

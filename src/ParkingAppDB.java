@@ -276,13 +276,16 @@ public class ParkingAppDB {
     }
 
     public void addBooking(SpaceBooking theSpaceBooking) {
-        String sql = "insert into toork.SpaceBooking values " + "(?, ?); ";
+        String sql = "insert into toork.SpaceBooking values " + "(?, ?, ?, ?, ?); ";
 
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setInt(1, theSpaceBooking.getMyBookingId());
-//            preparedStatement.setInt(2, theSpaceNumber);
+            preparedStatement.setInt(2, theSpaceBooking.getMyParkingSpaceNumber());
+            preparedStatement.setInt(3, theSpaceBooking.getMyStaffNumber());
+            preparedStatement.setString(4, theSpaceBooking.getMyLicenseNumber());
+            preparedStatement.setDate(2, theSpaceBooking.getMyDateOfVisit());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
