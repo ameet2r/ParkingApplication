@@ -7,7 +7,7 @@ public class TestSQL {
     public static void main(String[] args) {
         ParkingAppDB parkingAppDB = new ParkingAppDB();
         try {
-            System.out.println(parkingAppDB.getMaxParkingNumber());
+            System.out.println(parkingAppDB.getMaxParkingSpaceNumber());
         } catch (SQLException e) {
             e.printStackTrace();
         }
