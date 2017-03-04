@@ -45,8 +45,8 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
             "StudioName"};
 
     private String[] myParkingLotColumnNames = {"lotName", "location", "capacity", "floors"};
-    private String[] myParkingSpaceColumnNames = {};
-    private String[] myStaffColumnNames = {};
+    private String[] myParkingSpaceColumnNames = {"spaceNumber", "monthlyRate", "lotName"};
+    private String[] myStaffColumnNames = {"staffNumber", "staffName", "telephoneExt", "vehicleLicenseNumber"};
 
     private Object[][] data;
     private JTable table;
@@ -79,6 +79,7 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
     private ParkingAppDB myParkingAppDB;
 
     private List<ParkingLot> myListOfParkingLots;
+    private List<StaffMember> myListOfStaffMembers;
 
 
 
@@ -95,6 +96,7 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
         try
         {
             myListOfParkingLots = myParkingAppDB.getParkingLots();
+            myListOfStaffMembers = myParkingAppDB.getStaffMembers();
 
         } catch (SQLException e)
         {
@@ -280,19 +282,19 @@ public class GUI extends JFrame implements ActionListener, TableModelListener
         panel = new JPanel();
         //TODO remove and add real data
         try {
-            myListOfParkingLots = myParkingAppDB.getParkingLots();
+            myListOfStaffMembers = myParkingAppDB.getStaffMembers();
         } catch (SQLException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
         }
-        data = new Object[myListOfParkingLots.size()][myParkingLotColumnNames.length];
-        for (int i=0; i<myListOfParkingLots.size(); i++) {
-            data[i][0] = myListOfParkingLots.get(i).getMyLotName();
-            data[i][1] = myListOfParkingLots.get(i).getMyLocation();
-            data[i][2] = myListOfParkingLots.get(i).getMyCapacity();
-            data[i][3] = myListOfParkingLots.get(i).getMyNumberOfFloors();
+        data = new Object[myListOfStaffMembers.size()][myStaffColumnNames.length];
+        for (int i=0; i<myListOfStaffMembers.size(); i++) {
+            data[i][0] = myListOfStaffMembers.get(i).getMyStaffNumber();
+            data[i][1] = myListOfStaffMembers.get(i).getMyName();
+            data[i][2] = myListOfStaffMembers.get(i).getMyTelephoneExtNumber();
+            data[i][3] = myListOfStaffMembers.get(i).getMyVehicleLicenseNumber();
         }
-        myStaffTable = new JTable(data, myParkingLotColumnNames); //modify by adding data and columnNames
+        myStaffTable = new JTable(data, myStaffColumnNames);
         myStaffScrollPane = new JScrollPane(myStaffTable);
         panel.add(myStaffScrollPane);
         myStaffTable.getModel().addTableModelListener(this);
