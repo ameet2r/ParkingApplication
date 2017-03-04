@@ -21,11 +21,16 @@ public class TestSQL {
 //        parkingAppDB.updateStaff(0, "vehicleLicenseNumber", "12311111111");
 //        parkingAppDB.addStaffSpace(123, 4);
 //        parkingAppDB.updateParkingSpace(4, "taken", true);
-//        parkingAppDB.addBooking(new SpaceBooking(3, ));
         try {
-            System.out.println(parkingAppDB.getMaxBookingNumber());
+            parkingAppDB.addBooking(new SpaceBooking(parkingAppDB.getMaxBookingNumber() + 1, 6,
+                    123, "random", java.sql.Date.valueOf("2016-12-17")));
         } catch (SQLException e) {
             e.printStackTrace();
         }
+//        try {
+//            System.out.println(parkingAppDB.getMaxBookingNumber());
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
     }
 }
