@@ -6,4 +6,4 @@ The front end implementation is done using Java Swing, while the backend is done
 
 If you have issues connecting to the database, include the connector.jar file in your project.
 
-Check out the following YouTube video for a demo: https://youtu.be/4rL_PAMHLQ8
+Check out the following YouTube video for a demo: https://youtu.be/ex95LS142J0
