@@ -4,4 +4,4 @@ This application allows users of a company to manage multiple parking lots. Spac
 
 The front end implementation is done using Java Swing, while the backend is done in Java to communicate with our MariaDB database. The SQL query is located in the root folder if you'd like to populate the database with pre-existing data. 
 
-If you have issues connecting to the database, include the adapter.jar file in your project.
+If you have issues connecting to the database, include the connector.jar file in your project.
